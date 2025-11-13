@@ -7,6 +7,8 @@ import {
   SiPerplexity,
 } from "react-icons/si";
 import { BsFacebook, BsLinkedin } from "react-icons/bs";
+import {  useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
 import Navbar from "../components/Navbar.jsx";
 import GeminiIcon from "../assets/gemini-icon.svg";
 import ChatGPTPic from "../assets/chatgpt_pic.jpg";
@@ -15,54 +17,56 @@ import ClaudePic from "../assets/claude_pic.jpg";
 import GeminiPic from "../assets/gemini_pic.jpg";
 import PhotoProfile1 from "../assets/pp_0.jpg";
 import PhotoProfile2 from "../assets/pp_1.jpg";
+import PhotoProfile3 from "../assets/pp_2.jpg"; 
+
 
 // Data tiruan untuk card
 const relatedPostsData = [
   {
     imgSrc: ChatGPTPic,
-    date: "1 Mei 2025",
-    title:
-      "Cara memilih niche blog yang menarik, memikat pengunjung, dan menghasilkan uang",
+    date: "November 3, 2025",
+    title: "Evolusi ChatGPT: Dari GPT-3 ke GPT-5",
     description:
-      "Niche blog adalah topik spesifik yang akan Anda bahas. Niche yang tepat akan membantu Anda fokus dalam membuat konten...",
+      "ChatGPT terus berevolusi dari sekadar chatbot menjadi asisten pintar yang mampu memahami konteks, menulis kode, dan melakukan analisis kompleks. Versi GPT-5 membawa peningkatan besar pada akurasi dan gaya percakapan.",
     author: "Muhammad Nabil Farras Sulthan",
+    link: "/blog/chatgpt-ai",
   },
   {
     imgSrc: ClaudePic, // Ganti dengan path gambar Anda
-    date: "1 Mei 2025",
-    title:
-      "Cara memilih niche blog yang menarik, memikat pengunjung, dan menghasilkan uang",
+    date: "November 3, 2025",
+    title: "Claude AI: Kecerdasan Lembut dari Anthropic",
     description:
-      "Memilih niche blog adalah salah satu langkah penting yang akan menentukan keberhasilan blog Anda. Niche yang tepat...",
-    author: "Muhammad Nabil Farras Sulthan",
+      "Claude dikenal dengan pendekatannya yang lebih etis dan aman. Artikel ini membahas bagaimana Claude mengedepankan prinsip AI yang berfokus pada keselamatan dan interpretasi bahasa alami yang manusiawi.",
+    author: "Muhammad Zacky Maulana",
+    link: "/blog/claude-ai",
   },
   {
     imgSrc: QwenPic, // Ganti dengan path gambar Anda
-    date: "1 Mei 2025",
-    title:
-      "Cara memilih niche blog yang menarik, memikat pengunjung, dan menghasilkan uang",
+    date: "November 5, 2025",
+    title: "Qwen AI: Inovasi Open-Source dari Alibaba",
     description:
-      "Memilih niche blog adalah salah satu langkah penting yang akan menentukan keberhasilan blog Anda. Niche yang tepat...",
-    author: "Muhammad Nabil Farras Sulthan",
+      "Qwen AI menjadi sorotan berkat kemampuannya yang kuat dan sifatnya yang terbuka bagi pengembang. Pelajari bagaimana Qwen menantang dominasi model AI besar dengan performa efisien dan dukungan komunitas luas.",
+    author: "Rikza Ahmad Nur Muhammad",
+    link: "/blog/qwen-ai",
   },
 ];
 
 const ArticleHeader = () => {
   return (
     <section className="bg-white border-gray-200 ">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-4xl px-4 py-10 mx-auto sm:px-6 lg:px-8">
         {/* Baris Meta: Tag, Tanggal, Penulis */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+        <div className="flex flex-wrap items-center mb-6 gap-x-4 gap-y-2">
           <a
             href="https://gemini.google.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="flex items-center gap-2 w-fit cursor-pointer bg-white border border-gray-300 text-gray-800 font-medium rounded-lg px-3 py-1 hover:bg-gray-50 transition-all">
+            <div className="flex items-center gap-2 px-3 py-1 font-medium text-gray-800 transition-all bg-white border border-gray-300 rounded-lg cursor-pointer w-fit hover:bg-gray-50">
               <img
                 src={GeminiIcon}
                 alt="Gemini"
-                className="w-4 h-4 rounded-full object-cover"
+                className="object-cover w-4 h-4 rounded-full"
               />
               Gemini AI
             </div>
@@ -72,13 +76,13 @@ const ArticleHeader = () => {
         </div>
 
         {/* Judul Utama Artikel */}
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 py-8 mb-4">
+        <h1 className="py-8 mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
           Apa itu Gemini AI? Pengertian Gemini AI, Keunikan, dan Penggunaan yang
           tepat
         </h1>
 
         {/* Baris Bawah: Ringkasan dan Bagikan */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           {/* Kiri: Dapatkan ringkasan */}
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-700 ">
@@ -134,7 +138,7 @@ const ArticleHeader = () => {
 
 // Komponen untuk Gambar Utama (Thumbnail Video)
 const FeaturedImage = () => (
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
     <img
       src={GeminiPic}
       alt="Gemini All Features Explained"
@@ -144,59 +148,67 @@ const FeaturedImage = () => (
 );
 
 // Komponen untuk 3 Card Terkait
-const RelatedPosts = () => (
-  <>
-    <div className="flex justify-center px-4 py-12 sm:px-6 lg:px-8 bg-blue-50 mt-20">
-      <h2 className="text-3xl font-semibold text-gray-900 tracking-widest">
-        Artikel Terkait
-      </h2>
-    </div>
-    <section className="py-12 bg-blue-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-blue-200">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {relatedPostsData.map((post, key) => (
-            <div
-              key={key}
-              className="max-w-sm bg-white border border-gray-200 rounded-xl shadow p-4"
-            >
-              <img
-                src={post.imgSrc}
-                alt={post.title}
-                className="rounded-lg mb-4"
-              />
-              <p className="text-sm text-blue-900 py-3 font-medium">
-                {post.date}
-              </p>
-              <h5 className="text-md font-semibold text-gray-900 pb-3">
-                {post.title}
-              </h5>
-              <p className="text-gray-700 mb-2 text-sm pb-3">
-                {post.description}
-              </p>
-              <a
-                href="#"
-                className="text-blue-900 hover:underline text-sm font-medium"
-              >
-                Oleh {post.author}
-              </a>
-            </div>
-          ))}
-        </div>
+const RelatedPosts = () => {
+  const navigate = useNavigate();
+
+  const handleClick = (path) => {
+    navigate(path);
+  };
+  return (
+    <>
+      <div className="flex justify-center px-4 py-12 mt-20 sm:px-6 lg:px-8 bg-blue-50">
+        <h2 className="text-3xl font-semibold tracking-widest text-gray-900">
+          Artikel Terkait
+        </h2>
       </div>
-    </section>
-  </>
-);
+      <section className="py-12 bg-blue-200">
+        <div className="px-4 mx-auto bg-blue-200 max-w-7xl sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {relatedPostsData.map((post, key) => (
+              <div
+                key={key}
+                className="max-w-sm p-4 transition-all duration-300 transform bg-white border border-gray-200 shadow cursor-pointer rounded-xl hover:scale-105 hover:shadow-lg active:scale-100"
+                onClick={() => handleClick(post.link)}
+              >
+                <img
+                  src={post.imgSrc}
+                  alt={post.title}
+                  className="mb-4 rounded-lg"
+                />
+                <p className="py-3 text-sm font-medium text-blue-900">
+                  {post.date}
+                </p>
+                <h5 className="pb-3 font-semibold text-gray-900 text-md">
+                  {post.title}
+                </h5>
+                <p className="pb-3 mb-2 text-sm text-gray-700">
+                  {post.description}
+                </p>
+                <a
+                  href="#"
+                  className="text-sm font-medium text-blue-900 hover:underline"
+                >
+                  Oleh {post.author}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
 
 // Komponen untuk Konten Artikel Utama
 const ArticleContent = () => (
-  <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose lg:prose-xl">
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">
+  <article className="max-w-4xl px-4 py-12 mx-auto prose sm:px-6 lg:px-8 lg:prose-xl">
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">
       Apa itu Gemini AI?
     </h2>
     <p className="mb-6">
       <strong>Gemini AI</strong> adalah model kecerdasan buatan (AI) yang
       dikembangkan oleh
-      <span className="text-blue-700 font-medium"> Google DeepMind</span>.
+      <span className="font-medium text-blue-700"> Google DeepMind</span>.
       Gemini dirancang untuk menjadi sistem multimodal generasi baru, yang
       berarti mampu memahami dan memproses berbagai bentuk data seperti teks,
       gambar, audio, dan video secara bersamaan. Tujuan utama dari Gemini adalah
@@ -212,7 +224,7 @@ const ArticleContent = () => (
       dari riset, pendidikan, pengembangan software, hingga kreativitas digital.
     </p>
     {/* === SEJARAH GEMINI AI === */}
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">Sejarah Gemini AI</h2>
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">Sejarah Gemini AI</h2>
     <p className="mb-6">
       Gemini AI pertama kali diumumkan oleh Google pada{" "}
       <strong>Desember 2023</strong> sebagai penerus dari proyek AI sebelumnya
@@ -231,7 +243,7 @@ const ArticleContent = () => (
       Google.
     </p>
     {/* === KEUNIKAN GEMINI SAAT INI === */}
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">
       Keunikan Gemini yang Ada Saat Ini
     </h2>
     <p className="mb-6">
@@ -256,7 +268,7 @@ const ArticleContent = () => (
       internasional.
     </p>
     {/* === STRUKTUR GEMINI AI === */}
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">
       Struktur Gemini AI
     </h2>
     <p className="mb-6">
@@ -267,7 +279,7 @@ const ArticleContent = () => (
       sistem reasoning.
     </p>
     <p className="mb-6">Komponen utamanya meliputi:</p>
-    <ol className="list-decimal ml-6 mb-6 space-y-2">
+    <ol className="mb-6 ml-6 space-y-2 list-decimal">
       <li>
         <strong>Language Understanding Module</strong> — menangani pemrosesan
         teks dan konteks linguistik.
@@ -291,7 +303,7 @@ const ArticleContent = () => (
       hingga menghasilkan konten kreatif.
     </p>
     {/* === FUNGSI DAN MANFAAT === */}
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">
       Fungsi Gemini AI dan Manfaatnya
     </h2>
     <p className="mb-6">
@@ -304,7 +316,7 @@ const ArticleContent = () => (
     <p className="mb-6">
       Dalam dunia profesional, Gemini AI banyak digunakan untuk:
     </p>
-    <ul className="list-disc ml-6 mb-6 space-y-2">
+    <ul className="mb-6 ml-6 space-y-2 list-disc">
       <li>Analisis data bisnis dan pembuatan laporan otomatis.</li>
       <li>
         Pendamping riset ilmiah dengan kemampuan membaca literatur akademik.
@@ -317,7 +329,7 @@ const ArticleContent = () => (
         Peningkatan efisiensi komunikasi dan layanan pelanggan berbasis AI.
       </li>
     </ul>
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">Kesimpulan</h2>
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">Kesimpulan</h2>
     <p className="mb-6">
       <strong>Gemini AI</strong> merupakan langkah besar dalam evolusi teknologi
       kecerdasan buatan. Dengan kemampuan multimodal, reasoning tingkat lanjut,
@@ -336,22 +348,22 @@ const ArticleContent = () => (
 
 // Komponen untuk Kotak Penulis
 const AuthorBox = () => (
-  <section className="max-w-4xl mx-auto bg-blue-50 rounded-xl px-4 sm:px-6 lg:px-8 py-12 shadow-sm border border-blue-100 my-20">
-    <div className="flex items-center space-x-5 mb-4">
+  <section className="max-w-4xl px-4 py-12 mx-auto my-20 border border-blue-100 shadow-sm bg-blue-50 rounded-xl sm:px-6 lg:px-8">
+    <div className="flex items-center mb-4 space-x-5">
       <img
-        className="w-16 h-16 rounded-full object-cover"
+        className="object-cover w-16 h-16 rounded-full"
         src={PhotoProfile1}
         alt="Foto Muhammad Nabil"
       />
       <div>
-        <p className="text-sm text-blue-700 font-semibold mb-1">Penulis</p>
-        <h3 className="text-xl font-bold text-blue-900 leading-tight">
+        <p className="mb-1 text-sm font-semibold text-blue-700">Penulis</p>
+        <h3 className="text-xl font-bold leading-tight text-blue-900">
           Muhammad Nabil Farras Sulthan
         </h3>
       </div>
     </div>
 
-    <p className="text-gray-700 leading-relaxed">
+    <p className="leading-relaxed text-gray-700">
       Nabil sudah berpengalaman selama 10 tahun sebagai linguist dan 5 tahun
       sebagai{" "}
       <span className="font-semibold">Content Marketing Specialist</span> di
@@ -359,13 +371,13 @@ const AuthorBox = () => (
       belajar bahasa. Melalui tutorial Hostinger ini, Nabil ingin berbagi
       informasi dan membantu pembaca mengatasi masalah yang dialami. Kenali
       Nabil lebih dekat di{" "}
-      <a href="#" className="text-blue-700 font-semibold hover:underline">
+      <a href="#" className="font-semibold text-blue-700 hover:underline">
         LinkedIn
       </a>
       .
     </p>
 
-    <p className="mt-4 text-sm text-blue-700 font-semibold hover:underline cursor-pointer">
+    <p className="mt-4 text-sm font-semibold text-blue-700 cursor-pointer hover:underline">
       Tutorial lain dari Muhammad Nabil Farras Sulthan
     </p>
   </section>
@@ -373,8 +385,8 @@ const AuthorBox = () => (
 
 // Komponen untuk Tag Terkait
 const QuestionFAQ = () => (
-  <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-    <h2 className="text-3xl font-bold mb-6 text-blue-900">
+  <section className="max-w-4xl px-4 py-2 mx-auto sm:px-6 lg:px-8">
+    <h2 className="mb-6 text-3xl font-bold text-blue-900">
       Pertanyaan yang Sering Diajukan
     </h2>
 
@@ -382,7 +394,7 @@ const QuestionFAQ = () => (
       <h2 id="accordion-open-heading-1">
         <button
           type="button"
-          class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200  gap-3"
+          class="flex items-center justify-between w-full p-5 font-medium text-gray-700 border hover:cursor-pointer border-gray-200 rounded-t-xl gap-3 bg-white hover:bg-gray-50 focus:bg-white active:bg-white !bg-white data-[active]:!bg-white transition-all"
           data-accordion-target="#accordion-open-body-1"
           aria-expanded="true"
           aria-controls="accordion-open-body-1"
@@ -444,7 +456,7 @@ const QuestionFAQ = () => (
       <h2 id="accordion-open-heading-2">
         <button
           type="button"
-          class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200   gap-3"
+          class="flex items-center justify-between w-full hover:cursor-pointer p-5 font-medium text-gray-700 border border-gray-200 rounded-t-xl gap-3 bg-white hover:bg-gray-50 focus:bg-white active:bg-white !bg-white data-[active]:!bg-white transition-all"
           data-accordion-target="#accordion-open-body-2"
           aria-expanded="false"
           aria-controls="accordion-open-body-2"
@@ -506,7 +518,7 @@ const QuestionFAQ = () => (
       <h2 id="accordion-open-heading-3">
         <button
           type="button"
-          class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 gap-3"
+          class="flex items-center justify-between w-full p-5 font-medium hover:cursor-pointer text-gray-700 border border-gray-200 rounded-t-xl gap-3 bg-white hover:bg-gray-50 focus:bg-white active:bg-white !bg-white data-[active]:!bg-white transition-all"
           data-accordion-target="#accordion-open-body-3"
           aria-expanded="false"
           aria-controls="accordion-open-body-3"
@@ -568,140 +580,269 @@ const QuestionFAQ = () => (
   </section>
 );
 
-// Komponen untuk Bagian Komentar
-const Comments = () => (
-  <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <h2 className="text-3xl font-bold mb-4 text-blue-900">Komentar</h2>
+const Comments = () => {
+  const commentSectionRef = useRef(null);
+  const [lastUserName, setLastUserName] = useState("");
+  // Data komentar awal
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      name: "Shen",
+      date: "2 Nov 2025",
+      message:
+        "Halo, saya sedang mencari informasi mengenai AI, dan tulisan kakak diatas selain memberikan informasi juga jadi menginspirasi saya untuk lebih memperdalam dunia AI.",
+      avatar: PhotoProfile2,
+      replies: [
+        {
+          id: 2,
+          name: "Muhammad Nabil Farras Sulthan",
+          date: "2 Nov 2025",
+          message: "Halo, senang bisa membantu.",
+          avatar: PhotoProfile1,
+        },
+      ],
+    },
+  ]);
 
-    {/* Daftar Komentar */}
-    <div className="space-y-6">
-      {/* Komentar 1 */}
-      <article className="p-4 text-base bg-white rounded-lg ">
-        <footer className="flex justify-between items-center mb-2">
-          <div className="flex items-center">
-            <img
-              className="mr-4 w-8 h-8 rounded-full object-cover"
-              src={PhotoProfile2}
-              alt="Foto Shen"
-            />
-            <div className="flex flex-col">
-              <p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 ">
-                Shen
-              </p>
-              <p className="inline-flex items-center mr-3 text-sm font-regular text-gray-900">
-                2 Nov 2025
-              </p>
-            </div>
+  // State untuk form komentar baru
+  const [newComment, setNewComment] = useState({
+    name: "",
+    email: "",
+    message: "",
+    agree: false,
+  });
+
+  // State untuk reply
+  const [replyingTo, setReplyingTo] = useState(null);
+  const [replyMessage, setReplyMessage] = useState("");
+
+  // Fungsi handle input komentar utama
+  const handleChange = (e) => {
+    const { id, value, type, checked } = e.target;
+    setNewComment({
+      ...newComment,
+      [id]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Kirim komentar utama
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!newComment.name || !newComment.email || !newComment.message || !newComment.agree) {
+      alert("Harap isi semua kolom dan setujui kebijakan privasi.");
+      return;
+    }
+
+    const newEntry = {
+      id: Date.now(),
+      name: newComment.name,
+      date: new Date().toLocaleDateString("id-ID", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+      message: newComment.message,
+      avatar: PhotoProfile3,
+      replies: [],
+    };
+
+    // Tambahkan di atas komentar lain
+    setComments([newEntry, ...comments]);
+    setLastUserName(newComment.name);
+
+    // Reset form
+    setNewComment({ name: "", email: "", message: "", agree: false });
+  };
+
+  // Kirim balasan
+  const handleReplySubmit = (e, parentId) => {
+    e.preventDefault();
+
+    if (!replyMessage) return alert("Balasan tidak boleh kosong!");
+
+    const newReply = {
+      id: Date.now(),
+      name: lastUserName || "User",
+      date: new Date().toLocaleDateString("id-ID", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+      message: replyMessage,
+      avatar: PhotoProfile3,
+    };
+
+    // Tambahkan balasan ke komentar yang sesuai
+    const updated = comments.map((c) =>
+      c.id === parentId ? { ...c, replies: [...c.replies, newReply] } : c
+    );
+
+    setComments(updated);
+    setReplyMessage("");
+    setReplyingTo(null);
+
+    // Scroll otomatis ke area komentar
+    setTimeout(() => {
+      commentSectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 200);
+  };
+
+  return (
+    <section className="max-w-4xl px-4 py-10 mx-auto sm:px-6 lg:px-8">
+      <h2 className="mb-4 text-3xl font-bold text-blue-900">Komentar</h2>
+
+      {/* Daftar Komentar */}
+      <div className="space-y-6">
+        {comments.map((comment) => (
+          <div key={comment.id}>
+            {/* Komentar Utama */}
+            <article className="p-4 text-base bg-white border border-gray-100 rounded-lg">
+              <footer className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <img
+                    className="object-cover w-8 h-8 mr-4 rounded-full"
+                    src={comment.avatar}
+                    alt={`Foto ${comment.name}`}
+                  />
+                  <div className="flex flex-col">
+                    <p className="text-sm font-semibold text-gray-900">{comment.name}</p>
+                    <p className="text-sm text-gray-600">{comment.date}</p>
+                  </div>
+                </div>
+              </footer>
+              <p className="text-gray-700">{comment.message}</p>
+
+              <div className="flex items-center mt-4 space-x-4">
+                <button
+                  type="button"
+                  onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
+                  className="text-sm font-medium text-gray-500 cursor-pointer hover:underline"
+                >
+                  BALAS
+                </button>
+              </div>
+
+              {/* Form Balasan */}
+              {replyingTo === comment.id && (
+                <form
+                  onSubmit={(e) => handleReplySubmit(e, comment.id)}
+                  className="mt-4 space-y-3"
+                >
+                  <textarea
+                    rows={3}
+                    placeholder="Tulis balasan..."
+                    value={replyMessage}
+                    onChange={(e) => setReplyMessage(e.target.value)}
+                    className="w-full p-2 text-black bg-white border border-gray-300 rounded-md outline-none focus:ring-2 focus:ring-blue-700"
+                  ></textarea>
+                  <button
+                    type="submit"
+                    className="px-6 py-2 text-sm font-semibold text-white bg-blue-900 rounded-full hover:bg-blue-800 hover:cursor-pointer"
+                  >
+                    Kirim Balasan
+                  </button>
+                </form>
+              )}
+            </article>
+
+            {/* Balasan */}
+            {comment.replies?.length > 0 && (
+              <div className="mt-3 ml-6 space-y-4 lg:ml-12">
+                {comment.replies.map((reply) => (
+                  <article
+                    key={reply.id}
+                    className="p-4 text-base bg-white border border-gray-100 rounded-lg"
+                  >
+                    <footer className="flex items-center justify-between mb-2">
+                      <div className="flex items-center">
+                        <img
+                          className="object-cover w-8 h-8 mr-2 rounded-full"
+                          src={reply.avatar}
+                          alt={`Foto ${reply.name}`}
+                        />
+                        <div className="flex flex-col">
+                          <p className="text-sm font-semibold text-gray-900">{reply.name}</p>
+                          <p className="text-sm text-gray-600">{reply.date}</p>
+                        </div>
+                      </div>
+                    </footer>
+                    <p className="text-gray-700">{reply.message}</p>
+                  </article>
+                ))}
+              </div>
+            )}
           </div>
-        </footer>
-        <p className="text-gray-600 ">
-          Halo, saya sedang mencari informasi mengenai AI, dan tulisan kakak
-          diatas selain memberikan informasi juga jadi menginspirasi saya untuk
-          lebih memperdalam dunia AI.
-        </p>
-        <div className="flex items-center mt-4 space-x-4">
-          <button
-            type="button"
-            className="flex items-center text-sm text-gray-500 hover:underline cursor-pointer font-medium"
-          >
-            BALAS
-          </button>
-        </div>
-      </article>
-
-      {/* Komentar 2 (Balasan) */}
-      <article className="p-4 ml-6 lg:ml-12 text-base bg-white rounded-lg ">
-        <footer className="flex justify-between items-center mb-2">
-          <div className="flex items-center">
-            <img
-              className="mr-2 w-8 h-8 rounded-full object-cover"
-              src={PhotoProfile1}
-              alt="Foto Muhammad Nabil"
-            />
-            <div className="flex flex-col">
-              <p className="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 ">
-                Muhammad Nabil Farras Sulthan
-              </p>
-              <p className="inline-flex items-center mr-3 text-sm font-regular text-gray-900">
-                2 Nov 2025
-              </p>
-            </div>
-          </div>
-        </footer>
-        <p className="text-gray-600 ">Halo, senang bisa membantu.</p>
-
-        <div className="flex items-center mt-4 space-x-4">
-          <button
-            type="button"
-            className="flex items-center text-sm text-gray-500 hover:underline cursor-pointer font-medium"
-          >
-            BALAS
-          </button>
-        </div>
-      </article>
-    </div>
-
-    {/* Form Komentar */}
-    <h3 className="text-3xl font-bold mb-4 text-blue-900 mt-15">
-      Tinggalkan Komentar
-    </h3>
-
-    <form className="space-y-5">
-      {/* Komentar */}
-      <textarea
-        id="comment"
-        placeholder="Komentar*"
-        required
-        rows={5}
-        className="w-full text-black placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-700 focus:border-blue-700 p-3 outline-none"
-      ></textarea>
-
-      {/* Nama */}
-      <input
-        type="text"
-        id="name"
-        placeholder="Nama*"
-        required
-        className="w-full text-black placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-700 focus:border-blue-700 p-3 outline-none"
-      />
-
-      {/* Email */}
-      <input
-        type="email"
-        id="email"
-        placeholder="Email*"
-        required
-        className="w-full text-black placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-700 focus:border-blue-700 p-3 outline-none"
-      />
-
-      {/* Checkbox */}
-      <div className="flex items-start space-x-2 text-sm text-gray-700">
-        <input
-          type="checkbox"
-          id="agree"
-          required
-          className="mt-1 accent-blue-800 w-4 h-4"
-        />
-        <label htmlFor="agree" className="leading-snug">
-          Dengan menggunakan formulir ini, maka Anda setuju bahwa data pribadi
-          Anda akan diproses sesuai dengan{" "}
-          <a href="#" className="text-blue-700 font-semibold hover:underline">
-            Kebijakan Privasi
-          </a>{" "}
-          kami.
-        </label>
+        ))}
       </div>
 
-      {/* Tombol */}
-      <button
-        type="submit"
-        className="bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-full px-10 py-3 text-base cursor-pointer transition-all"
-      >
-        Kirim
-      </button>
-    </form>
-  </section>
-);
+      {/* Form Komentar Utama */}
+      <h3 className="mt-12 mb-4 text-3xl font-bold text-blue-900">
+        Tinggalkan Komentar
+      </h3>
+
+      <form className="space-y-5" onSubmit={handleSubmit}>
+        <textarea
+          id="message"
+          placeholder="Komentar*"
+          required
+          rows={5}
+          value={newComment.message}
+          onChange={handleChange}
+          className="w-full p-3 text-black placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm outline-none focus:ring-2 focus:ring-blue-700"
+        ></textarea>
+
+        <input
+          type="text"
+          id="name"
+          placeholder="Nama*"
+          required
+          value={newComment.name}
+          onChange={handleChange}
+          className="w-full p-3 text-black placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm outline-none focus:ring-2 focus:ring-blue-700"
+        />
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email*"
+          required
+          value={newComment.email}
+          onChange={handleChange}
+          className="w-full p-3 text-black placeholder-gray-400 bg-white border border-gray-300 rounded-md shadow-sm outline-none focus:ring-2 focus:ring-blue-700"
+        />
+
+        <div className="flex items-start space-x-2 text-sm text-gray-700">
+          <input
+            type="checkbox"
+            id="agree"
+            checked={newComment.agree}
+            onChange={handleChange}
+            className="w-4 h-4 mt-1 accent-blue-800 hover:cursor-pointer"
+          />
+          <label htmlFor="agree" className="leading-snug">
+            Dengan menggunakan formulir ini, maka Anda setuju bahwa data pribadi
+            Anda akan diproses sesuai dengan{" "}
+            <a href="#" className="font-semibold text-blue-700 hover:underline">
+              Kebijakan Privasi
+            </a>{" "}
+            kami.
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          className="px-10 py-3 text-base font-semibold text-white bg-blue-900 rounded-full hover:bg-blue-800 hover:cursor-pointer"
+        >
+          Kirim
+        </button>
+      </form>
+    </section>
+  );
+};
 
 // Komponen Utama Halaman Blog
 export default function Blog() {

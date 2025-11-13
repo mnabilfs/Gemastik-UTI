@@ -5,18 +5,18 @@ import Avatar from "../assets/avatar.jpg";
 const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-200">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         {/* LOGO */}
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-10" alt="Human After Tech Logo" />
         </a>
 
         {/* RIGHT SECTION */}
-        <div className="flex items-center md:order-2 space-x-5">
+        <div className="flex items-center space-x-5 md:order-2">
           {/* SUN ICON */}
           <button
             type="button"
-            className="flex items-center justify-center text-gray-900 hover:text-gray-500 focus:outline-none cursor-pointer"
+            className="flex items-center justify-center text-gray-900 cursor-pointer hover:text-gray-500 focus:outline-none"
             aria-label="Toggle light/dark mode"
           >
             <svg
@@ -43,13 +43,13 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <span className="text-gray-300 text-lg select-none">
+          <span className="text-lg text-gray-300 select-none">
             |
           </span>
 
           <button
             type="button"
-            className="flex items-center justify-center text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 cursor-pointer"
+            className="flex items-center justify-center text-sm bg-gray-800 rounded-full cursor-pointer focus:ring-4 focus:ring-gray-300"
             id="user-menu-button"
             aria-expanded="false"
             data-dropdown-toggle="user-dropdown"
@@ -57,7 +57,7 @@ const Navbar = () => {
           >
             <span className="sr-only">Open user menu</span>
             <img
-              className="w-9 h-9 rounded-full object-cover"
+              className="object-cover rounded-full w-9 h-9"
               src={Avatar}
               alt="user photo"
             />
@@ -77,7 +77,7 @@ const Navbar = () => {
             <ul className="py-2" aria-labelledby="user-menu-button">
               <li>
                 <a
-                  href="#"
+                  href="/dashboard"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Dashboard
