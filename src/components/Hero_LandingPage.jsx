@@ -1,104 +1,140 @@
 import React from "react";
 
-// Import logo-logo AI (pastikan file ini ada di folder assets)
-// Contoh: import ChatGPTLogo from "../assets/chatgpt-logo.png";
-// Anda bisa sesuaikan dengan nama file yang ada
+// Import logo-logo AI
+import LogoGPT from "../assets/Logo_GPT.png";
+import LogoGemini from "../assets/Logo_Gemini.png";
+import LogoClaude from "../assets/Logo_Claude.png";
+import LogoHumata from "../assets/Logo_Humata.png";
+import LogoBing from "../assets/Logo_Bing.png";
+import LogoMeta from "../assets/Logo_Meta.png";
 
 const Hero_LandingPage = () => {
-  // Data untuk floating icons
+  // Data untuk floating icons - Sisi Kiri Vertikal
   const floatingIcons = [
     { 
       id: 1, 
-      // src: ChatGPTLogo, // ganti dengan import logo
+      src: LogoGPT,
       alt: "ChatGPT",
-      position: "top-20 left-16",
-      size: "w-24 h-24",
-      rotation: "rotate-12",
-      delay: "0s"
+      position: "top-[65px] left-[35px]",
+      size: "w-[102px] h-[115px]",
+      rotation: "-rotate-[8.3deg]",
+      delay: "0s",
+      // Styling khusus untuk container
+      containerStyle: {
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '20px',
+        boxShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
+        transform: 'rotate(8.3deg)'
+      },
+      // Styling khusus untuk image
+      imageStyle: {
+        filter: 'drop-shadow(0 0 0 transparent)',
+        backgroundColor: 'transparent'
+      }
     },
     { 
-      id: 2,
-      // src: GeminiLogo,
+      id: 2, 
+      src: LogoGemini,
       alt: "Gemini",
-      position: "top-32 left-48",
-      size: "w-20 h-20",
-      rotation: "-rotate-6",
-      delay: "0.5s"
+      position: "top-[187px] left-[164px]",
+      size: "w-[76px] h-[80px]",
+      rotation: "rotate-[0.78deg]",
+      delay: "0s",
+      containerStyle: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '20px',
+        boxShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
+        transform: 'rotate(0.78deg)'
+      },
+      imageStyle: {
+        filter: 'drop-shadow(0 0 0 transparent)',
+        backgroundColor: 'transparent'
+      }
     },
     { 
       id: 3,
-      // src: ClaudeLogo,
+      src: LogoClaude,
       alt: "Claude",
-      position: "top-64 left-32",
-      size: "w-20 h-20",
-      rotation: "rotate-3",
-      delay: "1s"
+      position: "top-[270px] left-[35px]",
+      size: "w-[129.03px] h-[135.73px]",
+      rotation: "rotate-[-22.85deg]",
+      delay: "0s",
+      containerStyle: {
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '20px',
+        boxShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
+        transform: 'rotate(-22.85deg)'
+      },
+      imageStyle: {
+        filter: 'drop-shadow(0 0 0 transparent)',
+        backgroundColor: 'transparent'
+      }
     },
     { 
       id: 4,
-      // src: PerplexityLogo,
-      alt: "Perplexity",
-      position: "bottom-32 left-20",
-      size: "w-24 h-24",
-      rotation: "-rotate-12",
-      delay: "1.5s"
+      src: LogoMeta,
+      alt: "Meta AI",
+      position: "top-[455px] left-[10px]",
+      size: "w-[81px] h-[83px]",
+      rotation: "rotate-[28.58deg]",
+      delay: "0s",
+      containerStyle: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '20px',
+        boxShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
+        transform: 'rotate(28.58deg)'
+      },
+      imageStyle: {
+        filter: 'drop-shadow(0 0 0 transparent)',
+        backgroundColor: 'transparent'
+      }
     },
     { 
       id: 5,
-      // src: MidjourneyLogo,
-      alt: "Midjourney",
-      position: "bottom-20 left-52",
-      size: "w-28 h-28",
-      rotation: "rotate-6",
-      delay: "2s"
+      src: LogoHumata,
+      alt: "Humata",
+      position: "top-[465px] left-[190px]",
+      size: "w-[127.13px] h-[128.71px]",
+      rotation: "rotate-[-0.78deg]",
+      delay: "0s",
+      containerStyle: {
+        backgroundColor: 'rgba(255, 184, 184, 0.6)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '20px',
+        boxShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
+        transform: 'rotate(-0.78deg)'
+      },
+      imageStyle: {
+       filter: 'drop-shadow(0 0 0 transparent)',
+        backgroundColor: 'transparent'
+      }
     },
     { 
       id: 6,
-      // src: BlackboxLogo,
-      alt: "Blackbox AI",
-      position: "top-20 right-16",
-      size: "w-32 h-32",
-      rotation: "-rotate-6",
-      delay: "0.3s"
-    },
-    { 
-      id: 7,
-      // src: CopilotLogo,
-      alt: "Copilot",
-      position: "top-48 right-48",
-      size: "w-20 h-20",
-      rotation: "rotate-12",
-      delay: "0.8s"
-    },
-    { 
-      id: 8,
-      // src: NotionLogo,
-      alt: "Notion AI",
-      position: "top-80 right-32",
-      size: "w-24 h-24",
-      rotation: "-rotate-3",
-      delay: "1.3s"
-    },
-    { 
-      id: 9,
-      // src: VSCodeLogo,
-      alt: "VS Code",
-      position: "bottom-40 right-20",
-      size: "w-28 h-28",
-      rotation: "rotate-6",
-      delay: "1.8s"
-    },
-    { 
-      id: 10,
-      // src: WixLogo,
-      alt: "Wix",
-      position: "bottom-16 right-56",
-      size: "w-20 h-20",
-      rotation: "-rotate-12",
-      delay: "2.3s"
+      src: LogoBing,
+      alt: "Bing AI",
+      position: "top-[605px] left-[130px]",
+      size: "w-[73.85px] h-[75.28px]",
+      rotation: "rotate-[5.44deg]",
+      delay: "0s",
+      containerStyle: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '20px',
+        boxShadow: '0 4px 40px rgba(0, 0, 0, 0.6)',
+        transform: 'rotate(5.44deg)'
+      },
+      imageStyle: {
+        filter: 'drop-shadow(0 0 0 transparent)',
+        backgroundColor: 'transparent'
+      }
     },
   ];
-
+  
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 overflow-hidden flex items-center justify-center py-20 px-4">
       {/* Background Pattern - Optional */}
@@ -117,24 +153,23 @@ const Hero_LandingPage = () => {
             animationDuration: "6s"
           }}
         >
-          <div className={`w-full h-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl ${icon.rotation} hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
-            {/* Placeholder - Ganti dengan logo asli */}
-            <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center text-white font-bold text-xs">
-              {icon.alt.substring(0, 2)}
-            </div>
-            {/* Uncomment jika sudah import logo:
+          <div 
+            className="w-full h-full hover:scale-110 transition-transform duration-300 flex items-center justify-center p-3"
+            style={icon.containerStyle}
+          >
             <img 
               src={icon.src} 
               alt={icon.alt}
-              className="w-16 h-16 object-contain"
-            /> */}
+              className="w-full h-full object-contain"
+              style={icon.imageStyle}
+            />
           </div>
         </div>
       ))}
 
       {/* Main Content Card */}
-      <div className="relative z-10 max-w-4xl w-full">
-        <div className="bg-gradient-to-br from-gray-400/40 to-gray-500/40 backdrop-blur-md rounded-3xl shadow-2xl p-12 md:p-16 text-center border border-white/20">
+      <div className="relative z-10 max-w-3xl w-full">
+        <div className="bg-[#ffffff] backdrop-blur-md rounded-3xl shadow-2xl p-12 md:p-22 text-center border border-white/20">
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-600 bg-clip-text text-transparent drop-shadow-lg">
             Jelajahi AI Bersama Kami
