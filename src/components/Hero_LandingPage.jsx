@@ -27,7 +27,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(8deg)",
       },
       imageStyle: {
@@ -44,7 +44,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(-1.25deg)",
       },
       imageStyle: {
@@ -61,7 +61,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(0deg)",
       },
       imageStyle: {
@@ -78,7 +78,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(0deg)",
       },
       imageStyle: {
@@ -226,7 +226,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(0.85deg)",
       },
       imageStyle: {
@@ -243,7 +243,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(-33.19deg)",
       },
       imageStyle: {
@@ -261,7 +261,7 @@ const Hero_LandingPage = () => {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
         backdropFilter: "blur(4px)",
         borderRadius: "20px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
         transform: "rotate(0.85deg)",
       },
       imageStyle: {

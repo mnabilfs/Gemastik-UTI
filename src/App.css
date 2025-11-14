@@ -27,7 +27,7 @@ html {
 }
 
 .fade-in-out {
-  animation: fade-in-out 3s ease-in-out infinite;
+  animation: fade-in-out 7s ease-in-out infinite;
   animation-fill-mode: both;
   will-change: opacity, transform;
 }
