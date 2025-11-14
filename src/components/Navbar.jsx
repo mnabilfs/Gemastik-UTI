@@ -85,23 +85,23 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/account"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Settings
+                  Profile
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/chat"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Earnings
+                  Chat
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
                   Sign out
