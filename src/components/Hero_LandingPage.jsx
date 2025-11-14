@@ -1,5 +1,3 @@
-import React from "react";
-
 // Import logo-logo AI
 import LogoGPT from "../assets/Logo_GPT.png";
 import LogoGemini from "../assets/Logo_Gemini.png";
@@ -255,7 +253,6 @@ const Hero_LandingPage = () => {
       position: "top-[515px] right-[5px]",
       size: "w-[150px] h-[169px]",
       rotation: "rotate-[0.85deg]",
-      delay: "1.6s",
       animation: "fade-in-out",
       containerStyle: {
         backgroundColor: "rgba(73, 157, 254, 0.2)",
