@@ -273,7 +273,11 @@ const Dashboard = () => {
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
+                  transform: 'scale(1)',                 // ★ DITAMBAHKAN
+                  transition: 'transform 0.25s ease',   // ★ DITAMBAHKAN
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}  // ★ DITAMBAHKAN
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}     // ★ DITAMBAHKAN
                 onClick={() => navigate('/notfound')}
               >
                 <div style={{ position: 'relative' }}>
@@ -322,7 +326,11 @@ const Dashboard = () => {
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
+                  transform: 'scale(1)',                 // ★ DITAMBAHKAN
+                  transition: 'transform 0.25s ease',   // ★ DITAMBAHKAN
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}  // ★ DITAMBAHKAN
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}     // ★ DITAMBAHKAN
                 onClick={() => navigate('/notfound')}
               >
                 <div style={{ position: 'relative' }}>
@@ -366,7 +374,11 @@ const Dashboard = () => {
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
+                  transform: 'scale(1)',                 // ★ DITAMBAHKAN
+                  transition: 'transform 0.25s ease',   // ★ DITAMBAHKAN
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}  // ★ DITAMBAHKAN
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}     // ★ DITAMBAHKAN
                 onClick={() => navigate('/notfound')}
               >
                 <div style={{ position: 'relative' }}>
@@ -410,7 +422,11 @@ const Dashboard = () => {
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
+                  transform: 'scale(1)',                 // ★ DITAMBAHKAN
+                  transition: 'transform 0.25s ease',   // ★ DITAMBAHKAN
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}  // ★ DITAMBAHKAN
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}     // ★ DITAMBAHKAN
                 onClick={() => navigate('/notfound')}
               >
                 <div style={{ position: 'relative' }}>
@@ -454,7 +470,11 @@ const Dashboard = () => {
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
+                  transform: 'scale(1)',                 // ★ DITAMBAHKAN
+                  transition: 'transform 0.25s ease',   // ★ DITAMBAHKAN
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}  // ★ DITAMBAHKAN
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}     // ★ DITAMBAHKAN
                 onClick={() => navigate('/notfound')}
               >
                 <div style={{ position: 'relative' }}>
@@ -498,7 +518,11 @@ const Dashboard = () => {
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
+                  transform: 'scale(1)',                 // ★ DITAMBAHKAN
+                  transition: 'transform 0.25s ease',   // ★ DITAMBAHKAN
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}  // ★ DITAMBAHKAN
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}     // ★ DITAMBAHKAN
                 onClick={() => navigate('/notfound')}
               >
                 <div style={{ position: 'relative' }}>
@@ -529,6 +553,74 @@ const Dashboard = () => {
                     <span style={{ fontSize: '12px', color: '#777' }}>14 July 2025</span>
                   </div>
                 </div>
+              </div>
+            </div>
+            {/* Pagination */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '40px',
+                gap: '15px',
+              }}
+            >
+              {/* Tombol nomor 1 */}
+              <div
+                 onClick={() => window.location.reload()}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  backgroundColor: '#ffffff',
+                  borderRadius: '10px',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  transition: 'transform 0.2s ease, background-color 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                  e.currentTarget.style.backgroundColor = '#e6e6e6';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.backgroundColor = '#ffffff';
+                }}
+              >
+                1
+              </div>
+
+              {/* Tombol panah ">" */}
+              <div
+                 onClick={() => window.location.reload()}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  backgroundColor: '#ffffff',
+                  borderRadius: '10px',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '18px',
+                  transition: 'transform 0.2s ease, background-color 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                  e.currentTarget.style.backgroundColor = '#e6e6e6';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.backgroundColor = '#ffffff';
+                }}
+              >
+                &gt;
               </div>
             </div>
           </section>
