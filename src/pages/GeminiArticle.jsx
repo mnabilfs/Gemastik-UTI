@@ -10,12 +10,12 @@ import { BsFacebook, BsLinkedin } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 import Navbar from "../components/Navbar.jsx";
-import ClaudeIcon from "../assets/claude-icon.svg";
+import GeminiIcon from "../assets/gemini-icon.svg";
 import ChatGPTPic from "../assets/chatgpt_pic.jpg";
 import QwenPic from "../assets/qwen_pic.jpg";
-import DeepseekPic from "../assets/deepseek_pic.jpg";
-import ClaudePic from "../assets/claude_pic1.png";
-import PhotoProfile1 from "../assets/pp_3.jpg";
+import ClaudePic from "../assets/claude_pic.jpg";
+import GeminiPic from "../assets/gemini_pic.jpg";
+import PhotoProfile1 from "../assets/pp_0.jpg";
 import PhotoProfile2 from "../assets/pp_1.jpg";
 import PhotoProfile3 from "../assets/pp_2.jpg";
 
@@ -31,13 +31,14 @@ const relatedPostsData = [
     link: "/blog/chatgpt-ai",
   },
   {
-    imgSrc: DeepseekPic, // Ganti dengan path gambar Anda
+    imgSrc: ClaudePic, // Ganti dengan path gambar Anda
     date: "November 3, 2025",
-    title: "DeepSeek AI: Kecepatan, Efisiensi, dan Ketelitian dari Model Cina",
+    title:
+      "Kenapa Banyak Orang Memilih Claude? Kebiasaan Pengguna AI Modern dan Kekuatan Claude dalam Produktivitas",
     description:
-      "DeepSeek dikenal sebagai AI yang sangat cepat, ringan, dan kuat dalam reasoning teknis. Artikel ini mengulas bagaimana DeepSeek menjadi pilihan banyak developer berkat efisiensi komputasi dan kemampuan analisisnya yang akurat.",
+      "Claude dikenal sebagai AI dengan jawaban yang terstruktur, tenang, dan sangat rapi. Cocok untuk coding, dokumentasi, dan pekerjaan profesional yang butuh ketelitian.",
     author: "Muhammad Zacky Maulana",
-    link: "/blog/deepseek-ai",
+    link: "/blog/claude-ai",
   },
   {
     imgSrc: QwenPic, // Ganti dengan path gambar Anda
@@ -57,27 +58,27 @@ const ArticleHeader = () => {
         {/* Baris Meta: Tag, Tanggal, Penulis */}
         <div className="flex flex-wrap items-center mb-6 gap-x-4 gap-y-2">
           <a
-            href="https://claude.ai/"
+            href="https://gemini.google.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <div className="flex items-center gap-2 px-3 py-1 font-medium text-gray-800 transition-all bg-white border border-gray-300 rounded-lg cursor-pointer w-fit hover:bg-gray-50">
               <img
-                src={ClaudeIcon}
+                src={GeminiIcon}
                 alt="Gemini"
                 className="object-cover w-4 h-4 rounded-full"
               />
-              Claude AI
+              Gemini AI
             </div>
           </a>
-          <span className="text-sm text-gray-600 ">Nov 5, 2025</span>
-          <span className="text-sm text-gray-600 ">M. Zacky Maulana</span>
+          <span className="text-sm text-gray-600 ">Nov 1, 2025</span>
+          <span className="text-sm text-gray-600 ">M. Nabil Farras S.</span>
         </div>
 
         {/* Judul Utama Artikel */}
         <h1 className="py-8 mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
-          Kenapa Banyak Orang Memilih Claude? Kebiasaan Pengguna AI Modern dan
-          Kekuatan Claude dalam Produktivitas
+          Apa itu Gemini AI? Pengertian Gemini AI, Keunikan, dan Penggunaan yang
+          tepat
         </h1>
 
         {/* Baris Bawah: Ringkasan dan Bagikan */}
@@ -139,7 +140,7 @@ const ArticleHeader = () => {
 const FeaturedImage = () => (
   <div className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
     <img
-      src={ClaudePic}
+      src={GeminiPic}
       alt="Gemini All Features Explained"
       className="w-full h-auto rounded-lg shadow-md"
     />
@@ -202,196 +203,145 @@ const RelatedPosts = () => {
 const ArticleContent = () => (
   <article className="max-w-4xl px-4 py-12 mx-auto prose sm:px-6 lg:px-8 lg:prose-xl">
     <h2 className="mb-4 text-3xl font-bold text-blue-900">
-      Mengapa Claude Banyak Digunakan oleh Developer, Penulis, dan Knowledge
-      Worker?
+      Apa itu Gemini AI?
     </h2>
     <p className="mb-6">
-      <strong>Claude AI</strong> adalah model kecerdasan buatan yang
+      <strong>Gemini AI</strong> adalah model kecerdasan buatan (AI) yang
       dikembangkan oleh
-      <span className="font-medium text-blue-700"> Anthropic</span>, terkenal
-      karena clean output, kemampuan reasoning tinggi, serta kualitas tulisan
-      yang stabil dan profesional. Jika Gemini unggul di multimodal dan
-      ekosistem Google, maka Claude bersinar sebagai AI yang terasa lebih
-      “manusiawi”, terstruktur, dan super helpful untuk pekerjaan teknis maupun
-      kreatif.
+      <span className="font-medium text-blue-700"> Google DeepMind</span>.
+      Gemini dirancang untuk menjadi sistem multimodal generasi baru, yang
+      berarti mampu memahami dan memproses berbagai bentuk data seperti teks,
+      gambar, audio, dan video secara bersamaan. Tujuan utama dari Gemini adalah
+      menciptakan asisten digital yang tidak hanya pintar secara linguistik,
+      tetapi juga memiliki kemampuan penalaran dan pemahaman kontekstual yang
+      mendalam.
     </p>
     <p className="mb-6">
-      Di era ketika produktivitas semakin bergantung pada kecerdasan buatan,
-      Claude menjadi salah satu alat favorit karena mampu menghasilkan jawaban
-      yang rapi, fokus, dan mudah dipahami — sesuatu yang sangat dihargai oleh
-      developer, mahasiswa, maupun profesional.
+      Tidak seperti chatbot konvensional, Gemini AI dibangun dengan kemampuan
+      analisis mendalam yang dapat meniru cara berpikir manusia dalam memecahkan
+      masalah kompleks. Dengan integrasi ke dalam ekosistem Google, Gemini AI
+      memiliki potensi besar untuk membantu pengguna di berbagai bidang mulai
+      dari riset, pendidikan, pengembangan software, hingga kreativitas digital.
     </p>
     {/* === SEJARAH GEMINI AI === */}
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">Sejarah Gemini AI</h2>
+    <p className="mb-6">
+      Gemini AI pertama kali diumumkan oleh Google pada{" "}
+      <strong>Desember 2023</strong> sebagai penerus dari proyek AI sebelumnya
+      yang bernama <em>Bard</em>. Setelah akuisisi tim DeepMind ke dalam
+      struktur riset utama Google, mereka menggabungkan kekuatan teknologi{" "}
+      <strong>Large Language Model (LLM)</strong> dengan algoritma penalaran
+      ilmiah milik DeepMind.
+    </p>
+    <p className="mb-6">
+      Versi awal Gemini, yaitu <strong>Gemini 1</strong>, menjadi landasan untuk
+      pengembangan versi lebih lanjut seperti Gemini 1.5 dan Gemini 2.0. Setiap
+      versi baru membawa peningkatan signifikan dalam kemampuan reasoning,
+      efisiensi komputasi, dan pemahaman konteks. Saat ini, Gemini telah
+      diintegrasikan ke dalam berbagai layanan Google seperti Gmail, Docs,
+      YouTube, dan Android, menjadikannya bagian penting dari transformasi AI
+      Google.
+    </p>
+    {/* === KEUNIKAN GEMINI SAAT INI === */}
     <h2 className="mb-4 text-3xl font-bold text-blue-900">
-      Apa yang Sebenarnya Paling Sering Digunakan Orang Saat Memakai Claude?
+      Keunikan Gemini yang Ada Saat Ini
     </h2>
     <p className="mb-6">
-      Berdasarkan kebiasaan pengguna AI saat ini, berikut adalah beberapa hal
-      yang paling sering dicari ketika membuka Claude:
+      Keunggulan Gemini AI terletak pada kemampuannya untuk bekerja secara
+      multimodal dan interaktif. Artinya, Gemini tidak hanya membaca teks,
+      tetapi juga dapat memahami gambar, menjelaskan video, bahkan menafsirkan
+      grafik atau data numerik secara langsung. Hal ini membuat Gemini jauh
+      lebih fleksibel dibandingkan model AI berbasis teks murni seperti ChatGPT
+      versi awal.
     </p>
-    <ol className="pl-6 mb-6 space-y-8 list-decimal">
-      {/* 1 */}
+    <p className="mb-6">
+      Selain itu, Gemini juga didesain untuk bekerja lintas platform — baik di
+      perangkat seluler maupun desktop. Gemini dapat digunakan sebagai asisten
+      AI di sistem operasi Android, membantu pengguna mengatur jadwal, mencari
+      informasi, hingga meringkas dokumen panjang hanya dengan satu perintah
+      suara.
+    </p>
+    <p className="mb-6">
+      Dalam konteks etika, Google juga menekankan transparansi dan keamanan data
+      pengguna pada setiap pengembangan Gemini. Setiap interaksi disimpan dan
+      diproses dengan standar privasi tinggi yang mengikuti pedoman
+      internasional.
+    </p>
+    {/* === STRUKTUR GEMINI AI === */}
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">
+      Struktur Gemini AI
+    </h2>
+    <p className="mb-6">
+      Secara teknis, Gemini AI dibangun di atas arsitektur{" "}
+      <strong>Transformer</strong> generasi terbaru yang dioptimalkan untuk
+      pemrosesan paralel. Struktur intinya terdiri dari beberapa lapisan model
+      bahasa besar (LLM) yang bekerja berdampingan dengan modul visual dan
+      sistem reasoning.
+    </p>
+    <p className="mb-6">Komponen utamanya meliputi:</p>
+    <ol className="mb-6 ml-6 space-y-2 list-decimal">
       <li>
-        <h3 className="text-xl font-semibold text-gray-900">
-          Membuat dan Membersihkan Kode (Clean Code Vibes)
-        </h3>
-        <p>
-          Banyak developer memilih Claude karena output kodenya rapi, mudah
-          dibaca, dan mengikuti best-practice. Jawaban Claude cenderung bebas
-          dari noise atau penjelasan berlebihan sehingga memudahkan integrasi
-          langsung ke proyek.
-        </p>
-
-        <p className="mt-2 font-medium">Karakteristik utama:</p>
-        <ul className="pl-5 mt-1 space-y-1 text-sm text-gray-700 list-disc">
-          <li>Rapi dan mudah dibaca</li>
-          <li>Mengikuti best-practice</li>
-          <li>Bebas dari penjelasan berlebihan</li>
-          <li>Struktur langkah demi langkah</li>
-        </ul>
-
-        <p className="mt-2">
-          Claude sangat jago membuat fungsi yang jelas lengkap dokumentasi,
-          melakukan refactoring kode besar, menjelaskan struktur program tanpa
-          membuatnya rumit, dan menulis pseudo-code sebelum implementasi.
-          <em className="block mt-2">
-            “Kalau mau kode bersih, ke Claude saja.”
-          </em>
-        </p>
+        <strong>Language Understanding Module</strong> — menangani pemrosesan
+        teks dan konteks linguistik.
       </li>
-
-      {/* 2 */}
       <li>
-        <h3 className="text-xl font-semibold text-gray-900">
-          Membantu Debugging Secara Logis
-        </h3>
-        <p>
-          Claude sering dipakai untuk membaca error panjang, menjelaskan akar
-          masalah dengan reasoning kuat, serta menawarkan solusi alternatif yang
-          tidak mengubah gaya coding asli tim.
-        </p>
-
-        <ul className="pl-5 mt-2 space-y-1 text-sm text-gray-700 list-disc">
-          <li>Membaca error panjang dan kompleks</li>
-          <li>Menjelaskan akar masalah dan sebabnya</li>
-          <li>Memberi solusi yang praktis dan dapat diandalkan</li>
-          <li>Rekomendasi pencegahan di masa depan</li>
-        </ul>
-
-        <p className="mt-2">
-          Pengguna menyukai Claude karena ia menjelaskan bukan hanya “apa” tapi
-          juga “kenapa” dan “bagaimana menghindarinya”.
-        </p>
+        <strong>Vision Processing Unit</strong> — bertanggung jawab untuk
+        pengenalan gambar dan video.
       </li>
-
-      {/* 3 */}
       <li>
-        <h3 className="text-xl font-semibold text-gray-900">
-          Menulis Konten Serius: Laporan, Esai, Proposal
-        </h3>
-        <p>
-          Claude punya tone profesional yang stabil — cocok untuk membuat
-          laporan ilmiah, esai, analisis, dokumen kerja, dan ringkasan panjang
-          tanpa kehilangan struktur.
-        </p>
-
-        <ul className="pl-5 mt-2 space-y-1 text-sm text-gray-700 list-disc">
-          <li>Menulis laporan akademik dan profesional</li>
-          <li>Menyusun proposal dan analisis terstruktur</li>
-          <li>Membuat ringkasan dokumen panjang</li>
-        </ul>
-
-        <p className="mt-2">
-          Keunggulan: mampu menulis panjang tetap terstruktur dan mudah diikuti
-          manusia.
-        </p>
+        <strong>Reasoning Core</strong> — pusat logika yang memungkinkan Gemini
+        memecahkan masalah dan mengambil keputusan.
       </li>
-
-      {/* 4 */}
       <li>
-        <h3 className="text-xl font-semibold text-gray-900">
-          Brainstorming & Ide Kreatif yang Lebih “Human”
-        </h3>
-        <p>
-          Untuk brainstorming, Claude menghasilkan ide yang matang, relevan, dan
-          langsung bisa dipakai — dari konsep produk sampai alur cerita dan
-          branding.
-        </p>
-
-        <ul className="pl-5 mt-2 space-y-1 text-sm text-gray-700 list-disc">
-          <li>Ide startup dan konsep produk</li>
-          <li>Alur cerita dan penulisan kreatif</li>
-          <li>Konsep branding dan nama produk</li>
-          <li>Solusi desain sistem yang praktis</li>
-        </ul>
-
-        <p className="mt-2">
-          Gaya ide yang tidak berlebihan dan terstruktur membuat Claude ideal
-          sebagai partner kreatif.
-        </p>
-      </li>
-
-      {/* 5 */}
-      <li>
-        <h3 className="text-xl font-semibold text-gray-900">
-          Membuat Dokumentasi yang Sederhana tapi Lengkap
-        </h3>
-        <p>
-          Banyak tim memakai Claude untuk dokumentasi—API docs, SOP, penjelasan
-          library, arsitektur sistem, dan ringkasan rapat. Claude bukan sekadar
-          menulis ulang; dia merancang dokumentasi agar mudah dimengerti
-          manusia.
-        </p>
-
-        <ul className="pl-5 mt-2 space-y-1 text-sm text-gray-700 list-disc">
-          <li>Dokumentasi API dan library</li>
-          <li>SOP internal dan proses kerja</li>
-          <li>Arsitektur sistem dan catatan teknis</li>
-        </ul>
-      </li>
-
-      {/* 6 */}
-      <li>
-        <h3 className="text-xl font-semibold text-gray-900">
-          Menggunakan Claude sebagai Partner Belajar
-        </h3>
-        <p>
-          Pelajar dan pembelajar mandiri menyukai Claude karena kemampuannya
-          menjelaskan secara sabar, step-by-step, dan menyesuaikan tingkat
-          teknis sesuai permintaan.
-        </p>
-
-        <ul className="pl-5 mt-2 space-y-1 text-sm text-gray-700 list-disc">
-          <li>Penjelasan dari basic hingga advanced</li>
-          <li>Subject: ML, matematika, pemrograman, sejarah, ekonomi</li>
-          <li>Gaya seperti “guru privat” yang sabar</li>
-        </ul>
-
-        <p className="mt-2">
-          Claude cocok untuk belajar konsep rumit dengan pendekatan yang mudah
-          diikuti.
-        </p>
+        <strong>Knowledge Graph Integration</strong> — sistem penghubung antara
+        data real-time dan informasi yang telah dilatih.
       </li>
     </ol>
-
-    {/* Kesimpulan */}
+    <p className="mb-6">
+      Kombinasi ini membuat Gemini AI dapat beradaptasi dengan berbagai skenario
+      pemakaian, mulai dari menjawab pertanyaan pengguna, menganalisis laporan,
+      hingga menghasilkan konten kreatif.
+    </p>
+    {/* === FUNGSI DAN MANFAAT === */}
+    <h2 className="mb-4 text-3xl font-bold text-blue-900">
+      Fungsi Gemini AI dan Manfaatnya
+    </h2>
+    <p className="mb-6">
+      Fungsi utama Gemini AI adalah membantu manusia menyelesaikan tugas
+      kompleks dengan cepat dan efisien. Dalam kehidupan sehari-hari, Gemini
+      dapat menjadi asisten digital cerdas yang membantu meringkas teks,
+      memberikan saran, hingga menciptakan ide-ide baru berdasarkan konteks
+      pengguna.
+    </p>
+    <p className="mb-6">
+      Dalam dunia profesional, Gemini AI banyak digunakan untuk:
+    </p>
+    <ul className="mb-6 ml-6 space-y-2 list-disc">
+      <li>Analisis data bisnis dan pembuatan laporan otomatis.</li>
+      <li>
+        Pendamping riset ilmiah dengan kemampuan membaca literatur akademik.
+      </li>
+      <li>
+        Asisten pengembangan perangkat lunak melalui pemahaman kode dan
+        debugging.
+      </li>
+      <li>
+        Peningkatan efisiensi komunikasi dan layanan pelanggan berbasis AI.
+      </li>
+    </ul>
     <h2 className="mb-4 text-3xl font-bold text-blue-900">Kesimpulan</h2>
     <p className="mb-6">
-      <strong>Claude AI</strong> bukan hanya AI untuk menjawab pertanyaan — dia
-      menjadi partner berpikir yang <strong> bersih, rapi, dan efisien</strong>.
-      Banyak orang menggunakannya karena:
+      <strong>Gemini AI</strong> merupakan langkah besar dalam evolusi teknologi
+      kecerdasan buatan. Dengan kemampuan multimodal, reasoning tingkat lanjut,
+      dan integrasi ekosistem Google, Gemini bukan sekadar chatbot — melainkan
+      fondasi masa depan kolaborasi manusia dan mesin.
     </p>
-    <ul className="pl-5 mt-2 mb-6 space-y-1 text-sm text-gray-700 list-disc">
-      <li>vibe coding yang clean dan lengkap</li>
-      <li>reasoning yang kuat dan logis</li>
-      <li>hasil yang rapi dan profesional</li>
-      <li>kemampuan menulis panjang tanpa “kelebihan bumbu”</li>
-    </ul>
     <p className="mb-6">
-      Dalam dunia yang serba cepat, Claude membantu pengguna tetap fokus,
-      produktif, dan kreatif. Itulah sebabnya Claude kini menjadi salah satu AI
-      yang paling disukai oleh developer, penulis, mahasiswa, hingga profesional
-      bisnis.
+      Keunggulan Gemini terletak pada kemampuannya memahami berbagai format
+      data, berpikir secara kontekstual, dan memberikan solusi yang lebih
+      manusiawi. Ke depan, peran Gemini AI diprediksi akan semakin luas: dari
+      dunia pendidikan hingga industri kreatif, menjadikannya salah satu inovasi
+      AI paling berpengaruh dalam dekade ini.
     </p>
   </article>
 );
@@ -408,23 +358,18 @@ const AuthorBox = () => (
       <div>
         <p className="mb-1 text-sm font-semibold text-blue-700">Penulis</p>
         <h3 className="text-xl font-bold leading-tight text-blue-900">
-          Muhammad Zacky Maulana
+          Muhammad Nabil Farras Sulthan
         </h3>
       </div>
     </div>
 
     <p className="leading-relaxed text-gray-700">
-      Muhammad Zacky Maulana telah berkecimpung di dunia teknologi dan penulisan
-      konten selama lebih dari 8 tahun. Berawal dari ketertarikannya pada
-      pemrograman dan UX writing, Zacky kemudian mengembangkan karier sebagai
-      <span className="font-semibold"> Technical Writer</span> dan{" "}
-      <span className="font-semibold">Product Content Specialist</span> di
-      berbagai perusahaan digital. Ia memiliki minat besar pada perkembangan
-      AI, pengembangan software, dan strategi konten yang berorientasi pada
-      pengguna. Melalui artikel dan tutorial ini, Zacky ingin membantu pembaca
-      memahami teknologi dengan cara yang sederhana, praktis, dan mudah
-      diterapkan dalam kehidupan sehari-hari. Ingin mengenal Zacky lebih jauh?
-      Kamu bisa terhubung dengannya melalui{" "}
+      Nabil sudah berpengalaman selama 10 tahun sebagai linguist dan 5 tahun
+      sebagai{" "}
+      <span className="font-semibold">Content Marketing Specialist</span>. Ia
+      suka mengikuti tren teknologi, digital marketing, dan belajar bahasa.
+      Melalui tutorial Hostinger ini, Nabil ingin berbagi informasi dan membantu
+      pembaca mengatasi masalah yang dialami. Kenali Nabil lebih dekat di{" "}
       <a href="#" className="font-semibold text-blue-700 hover:underline">
         LinkedIn
       </a>
@@ -432,7 +377,7 @@ const AuthorBox = () => (
     </p>
 
     <p className="mt-4 text-sm font-semibold text-blue-700 cursor-pointer hover:underline">
-      Tutorial lain dari Muhammad Zacky Maulana
+      Tutorial lain dari Muhammad Nabil Farras Sulthan
     </p>
   </section>
 );
@@ -466,8 +411,7 @@ const QuestionFAQ = () => (
                 clip-rule="evenodd"
               ></path>
             </svg>{" "}
-            Apa kelebihan utama Claude dibanding AI lain seperti ChatGPT atau
-            Gemini?
+            Apa perbedaan Gemini AI dengan ChatGPT?
           </span>
           <svg
             data-accordion-icon
@@ -494,11 +438,17 @@ const QuestionFAQ = () => (
       >
         <div class="p-5 border border-b-0 border-gray-200 ">
           <p class="mb-2 text-gray-500 ">
-            Claude dikenal dengan kekuatan reasoning-nya yang sangat stabil dan
-            mendalam. Banyak pengguna memilih Claude karena hasil tulisannya
-            lebih rapi, profesional, dan tidak “berlebihan”. Untuk coding,
-            Claude juga sering dianggap memiliki clean code vibes — struktur
-            jelas, komentar tepat, dan tidak terlalu banyak noise.
+            Gemini AI dan ChatGPT sama-sama merupakan model kecerdasan buatan
+            berbasis bahasa, namun dikembangkan oleh perusahaan yang berbeda.
+            Gemini AI dikembangkan oleh Google DeepMind, sedangkan ChatGPT
+            dikembangkan oleh OpenAI.
+          </p>
+          <p class="text-gray-500 ">
+            Keunggulan Gemini AI adalah kemampuannya memahami multimodal data —
+            tidak hanya teks, tetapi juga gambar, suara, hingga kode
+            pemrograman. Selain itu, Gemini terintegrasi langsung dengan
+            ekosistem Google, seperti Search, Docs, dan YouTube, yang membuatnya
+            lebih praktis digunakan dalam kehidupan sehari-hari.
           </p>
         </div>
       </div>
@@ -523,7 +473,7 @@ const QuestionFAQ = () => (
                 clip-rule="evenodd"
               ></path>
             </svg>
-            Apakah Claude bagus untuk coding dan debugging?
+            Bagaimana cara kerja sistem rekomendasi Gemini AI?
           </span>
           <svg
             data-accordion-icon
@@ -550,11 +500,17 @@ const QuestionFAQ = () => (
       >
         <div class="p-5 border border-b-0 border-gray-200 ">
           <p class="mb-2 text-gray-500 ">
-            Ya, Claude sangat populer di kalangan developer. Pengguna
-            menyukainya karena Claude dapat menjelaskan error dengan logika yang
-            kuat, memperbaiki kode tanpa mengubah gaya coding, serta memberikan
-            solusi yang bersih dan terstruktur. Bahkan untuk penjelasan sistem
-            atau pseudo-code, Claude biasanya sangat presisi dan mudah dipahami.
+            Gemini AI menggunakan gabungan teknologi machine learning, deep
+            learning, dan natural language processing (NLP) untuk memahami
+            konteks pengguna.
+          </p>
+          <p class="text-gray-500 ">
+            Saat kamu memberikan pertanyaan atau perintah, sistem akan
+            menganalisis input tersebut dan mencocokkannya dengan miliaran data
+            pelatihan untuk menghasilkan respons yang paling relevan. Selain
+            itu, Gemini AI juga memanfaatkan reinforcement learning untuk terus
+            belajar dari umpan balik pengguna, sehingga semakin lama performanya
+            semakin akurat dan kontekstual.
           </p>
         </div>
       </div>
@@ -579,7 +535,7 @@ const QuestionFAQ = () => (
                 clip-rule="evenodd"
               ></path>
             </svg>{" "}
-            Apakah Claude aman digunakan untuk dokumen kerja atau tugas sekolah?
+            Apakah data pengguna aman saat menggunakan Gemini AI?
           </span>
           <svg
             data-accordion-icon
@@ -606,11 +562,16 @@ const QuestionFAQ = () => (
       >
         <div class="p-5 border border-t-0 border-gray-200 ">
           <p class="mb-2 text-gray-500 ">
-            Claude cukup terpercaya untuk penulisan profesional karena tone-nya
-            stabil, formal, dan tidak mudah “halusinasi panjang”. Untuk laporan,
-            proposal, esai, atau dokumen kerja, Claude mampu menjaga struktur
-            tetap rapi dari awal hingga akhir. Namun, seperti AI lainnya, tetap
-            penting untuk memeriksa kembali fakta dan data yang diberikan.
+            Ya, Google menerapkan standar keamanan tingkat tinggi untuk
+            melindungi data pengguna dalam penggunaan Gemini AI. Informasi
+            pribadi tidak disimpan secara permanen tanpa izin pengguna dan
+            diproses menggunakan sistem enkripsi end-to-end.
+          </p>
+          <p class="mb-2 text-gray-500 ">
+            Google juga menyediakan pengaturan privasi transparan, sehingga
+            pengguna dapat mengontrol data apa saja yang dibagikan dan digunakan
+            untuk pelatihan model. Dengan begitu, interaksi dengan Gemini AI
+            tetap aman dan sesuai dengan kebijakan privasi yang ketat.
           </p>
         </div>
       </div>
@@ -633,7 +594,7 @@ const Comments = () => {
       replies: [
         {
           id: 2,
-          name: "Muhammad Zacky Maulana",
+          name: "Muhammad Nabil Farras Sulthan",
           date: "2 Nov 2025",
           message: "Halo, senang bisa membantu.",
           avatar: PhotoProfile1,
@@ -894,7 +855,7 @@ const Comments = () => {
 };
 
 // Komponen Utama Halaman Blog
-export default function Blog() {
+export default function GeminiArticle() {
   return (
     <main className="bg-white">
       <Navbar />
