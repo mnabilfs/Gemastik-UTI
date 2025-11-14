@@ -39,7 +39,7 @@ const Navbar_LandingPage = () => {
         </button>
 
         {/* DESKTOP MENU */}
-      <div className="hidden md:flex md:items-center md:space-x-8 md:ml-17">
+        <div className="hidden md:flex md:items-center md:space-x-8 md:ml-17">
           {/* Beranda */}
           <a
             href="/"
@@ -149,7 +149,7 @@ const Navbar_LandingPage = () => {
               >
                 Tentang Kami
               </a>
-              
+
               {/* Mobile Eksplorasi */}
               <div>
                 <button

@@ -93,7 +93,6 @@ const Hero_LandingPage = () => {
       rotation: "-rotate-[8.3deg]",
       delay: "0s",
       animation: "float-smooth",
-      // Styling khusus untuk container
       containerStyle: {
         backgroundColor: "rgba(255, 255, 255, 0.7)",
         backdropFilter: "blur(4px)",
@@ -101,7 +100,6 @@ const Hero_LandingPage = () => {
         boxShadow: "0 4px 40px rgba(0, 0, 0, 0.6)",
         transform: "rotate(8.3deg)",
       },
-      // Styling khusus untuk image
       imageStyle: {
         filter: "drop-shadow(0 0 0 transparent)",
         backgroundColor: "transparent",
@@ -453,26 +451,22 @@ const Hero_LandingPage = () => {
 
       {/* Floating AI Icons */}
       {floatingIcons.map((icon, index) => {
-        // daftar id yang non-interactive
         const nonInteractiveIds = [1, 2, 3, 4, 11, 12, 13];
         const isNonInteractive = nonInteractiveIds.includes(icon.id);
 
-        // --- konfigurasi delay (ubah sesuai kebutuhan) ---
-        const baseDelay = 0.2; // detik (dipakai kalau icon.delay nggak ada)
-        const step = 0.15; // detik per index untuk stagger
+        const baseDelay = 0.2;
+        const step = 0.15;
 
-        // override delay per-id jika perlu (detik, bukan string)
         const customDelays = {
-          1: 41.5,
-          2: 45.5,
-          3: 42.0,
-          4: 44.0,
-          11: 41.7,
-          12: 44.4,
-          13: 42.8,
+          1: 1.5,
+          2: 0.5,
+          3: 2.4,
+          4: 2.5,
+          11: 1.8,
+          12: 0.5,
+          13: 3.0,
         };
 
-        // parse icon.delay jika dalam format string "1.6s" atau angka
         const parsedIconDelay =
           typeof icon.delay === "string"
             ? (() => {
@@ -483,7 +477,6 @@ const Hero_LandingPage = () => {
             ? icon.delay
             : null;
 
-        // finalDelay: prioritas parsedIconDelay > customDelays[id] > base + index*step
         const finalDelay =
           parsedIconDelay !== null
             ? parsedIconDelay
@@ -502,7 +495,6 @@ const Hero_LandingPage = () => {
             key={icon.id}
             className={wrapperClasses}
             style={{
-              // selalu gunakan format "Xs" agar compatible dengan CSS animationDelay
               animationDelay: `${finalDelay}s`,
               pointerEvents: isNonInteractive ? "none" : undefined,
             }}
@@ -518,12 +510,10 @@ const Hero_LandingPage = () => {
               className="w-full h-full flex items-center justify-center p-3"
               style={{
                 ...icon.containerStyle,
-                // double-safety untuk non-interactive
                 pointerEvents: isNonInteractive ? "none" : undefined,
                 userSelect: isNonInteractive ? "none" : undefined,
               }}
             >
-              {/* Render icon hanya jika src ada */}
               {icon.src && (
                 <img
                   src={icon.src}
@@ -543,23 +533,37 @@ const Hero_LandingPage = () => {
 
       {/* Main Content Card */}
       <div className="relative z-10 max-w-3xl w-full">
-        <div className="bg-[#ffffff] backdrop-blur-md rounded-3xl shadow-2xl p-12 md:p-22 text-center border border-white/20">
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-600 bg-clip-text text-transparent drop-shadow-lg">
-            Jelajahi AI Bersama Kami
-          </h1>
+        <div className="rounded-3xl p-12 md:p-25 text-center relative">
+          {/* Background dengan animasi fade-in-out */}
+          <div
+            className="absolute inset-0 rounded-3xl fade-in-out"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.0)",
+              backdropFilter: "blur(2px)",
+              boxShadow: "0 4px 40px rgba(0, 0, 0, 0.1)",
+              animationDelay: "0s",
+            }}
+          ></div>
 
-          {/* Subtitle */}
-          <p className="text-gray-700 text-lg md:text-xl mb-8 font-medium leading-relaxed">
-            Artikel ringan, panduan praktis, dan rekomendasi
-            <br />
-            tools AI untuk dipakai sehari-hari.
-          </p>
+          {/* Content - Tidak terpengaruh animasi */}
+          <div className="relative z-10">
+            {/* Main Heading */}
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-600 bg-clip-text text-transparent drop-shadow-lg">
+              Jelajahi AI Bersama Kami
+            </h1>
 
-          {/* CTA Button */}
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-            Mulai Membaca
-          </button>
+            {/* Subtitle */}
+            <p className="text-gray-300 text-lg md:text-lg mb-8 font-medium leading-relaxed">
+              Artikel ringan, panduan praktis, dan rekomendasi
+              <br />
+              tools AI untuk dipakai sehari-hari.
+            </p>
+
+            {/* CTA Button */}
+            <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+              Mulai Membaca
+            </button>
+          </div>
         </div>
       </div>
     </section>
