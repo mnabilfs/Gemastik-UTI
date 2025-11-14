@@ -4,3 +4,70 @@
 html {
   font-family: 'Poppins', sans-serif;
 }
+
+/* Animations Hero_LandingPage */
+/* fade-in-out: muncul > idle > menghilang (loop) */
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.02);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.fade-in-out {
+  animation: fade-in-out 3s ease-in-out infinite;
+  animation-fill-mode: both;
+  will-change: opacity, transform;
+}
+
+/* float and subtle motion keyframes */
+@keyframes float-smooth {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50%      { transform: translateY(-15px) translateX(5px); }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33%      { transform: translateY(-12px) translateX(-8px); }
+  66%      { transform: translateY(-8px) translateX(8px); }
+}
+
+@keyframes float-wave {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25%      { transform: translateY(-10px) translateX(10px); }
+  50%      { transform: translateY(-18px) translateX(0px); }
+  75%      { transform: translateY(-10px) translateX(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50%      { transform: translateY(-20px) translateX(-5px); }
+}
+
+/* kelas helper yang dipakai di komponen (menyamai kelas JS yang ada) */
+.float-smooth { animation: float-smooth 5s ease-in-out infinite; will-change: transform; }
+.float-gentle { animation: float-gentle 6s ease-in-out infinite; will-change: transform; }
+.float-wave   { animation: float-wave 7s ease-in-out infinite; will-change: transform; }
+.float-slow   { animation: float-slow 8s ease-in-out infinite; will-change: transform; }
+
+/* optional: memastikan .fade-in-out respect animationDelay dari inline style
+   ( biasanya sudah bekerja, tetapi ini safe ) */
+.fade-in-out,
+.float-smooth,
+.float-gentle,
+.float-wave,
+.float-slow {
+  animation-fill-mode: both;
+}
