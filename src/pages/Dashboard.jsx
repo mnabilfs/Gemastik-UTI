@@ -25,7 +25,7 @@ import DbNLP from '../assets/DbNLP.jpg';
 import DbUMKM from '../assets/DbUMKM.png';
 
 //import placeholder from '../assets/placeholder.png';
-import placeholder from '../assets/placeholder.png';
+// import placeholder from '../assets/placeholder.png';
 import DbZAccount_male from '../assets/DbZAccount_male.png';
 import DbZDevilAngelpfp from '../assets/DbZDevilAngelpfp.jpg';
 import DbZSubarupfp from '../assets/DbZSubarupfp.jpg';
@@ -101,7 +101,7 @@ const Dashboard = () => {
           ].map((item, i) => (
             <button
               key={i}
-              onClick={() => navigate('/notfound')}
+              onClick={() => navigate('/internship')}
               style={{
                 width: '100%',
                 display: 'flex',
