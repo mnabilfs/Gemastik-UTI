@@ -12,7 +12,7 @@ import iconRecommend from '../assets/iconRecommend.png';
 import iconAccount from '../assets/iconAccount.png';
 import toggleIcon from '../assets/toggleIcon.png'; // tombol gulir sidebar
 
-const Intern = () => {
+const Internship = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const navigate = useNavigate();
 
@@ -211,4 +211,4 @@ const Intern = () => {
   );
 };
 
-export default Intern;
+export default Internship;
