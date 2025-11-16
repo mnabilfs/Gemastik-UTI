@@ -4,7 +4,6 @@ import {
   FaChevronRight,
   FaHome,
   FaBrain,
-  FaUserGraduate,
   FaBookOpen,
   FaRegComments,
 } from "react-icons/fa";
@@ -16,85 +15,47 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const menu = [
     { label: "Home", icon: <FaHome />, path: "/home" },
     { label: "Eksplorasi AI", icon: <FaBrain />, path: "/eksplorasi-ai" },
-    { label: "Internship", icon: <FaUserGraduate />, path: "/internship" },
     { label: "Learning Hub", icon: <FaBookOpen />, path: "/learning-hub" },
     { label: "Aktifitas Saya", icon: <FaRegComments />, path: "/aktifitas" },
   ];
 
   return (
     <div
-      style={{
-        width: isCollapsed ? "80px" : "220px",
-        backgroundColor: "#268AFD",
-        transition: "width 0.3s ease",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: isCollapsed ? "center" : "flex-start",
-        padding: "20px 10px",
-        height: "100vh",
-        position: "sticky",
-        top: 0,
-      }}
+      className={`flex flex-col ${
+        isCollapsed ? "items-center" : "items-start"
+      } bg-[#268AFD] h-screen relative p-5 transition-width duration-300`}
+      style={{ width: isCollapsed ? "80px" : "220px" }}
     >
-      {/* Toggle Button */}
+      {/* Toggle Button (di samping Home, lebih atas) */}
       <button
         onClick={toggleSidebar}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          marginBottom: "20px",
-        }}
+        className="absolute right-[-16px] bg-white border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center shadow-md z-10 cursor-pointer"
+        style={{ top: "30px" }} // posisi dinaikkan agar lebih dekat dengan Home
       >
         <FaChevronRight
-          style={{
-            width: "32px",
-            height: "32px",
-            color: "white",
-            transform: isCollapsed ? "rotate(180deg)" : "rotate(0deg)",
-            transition: "transform 0.3s ease",
-          }}
+          className={`w-4.5 h-4.5 text-[#268AFD] transition-transform duration-300 ${
+            isCollapsed ? "rotate-180" : "rotate-0"
+          }`}
         />
       </button>
 
       {/* Menu Items */}
-      {menu.map((item, i) => (
-        <button
-          key={i}
-          onClick={() => navigate(item.path)}
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: isCollapsed ? "center" : "flex-start",
-            backgroundColor: "transparent",
-            border: "none",
-            padding: "10px",
-            borderRadius: "8px",
-            marginBottom: "8px",
-            cursor: "pointer",
-            color: "white",
-            transition: "all 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.25)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "transparent";
-          }}
-        >
-          <span
-            style={{
-              fontSize: "24px",
-              marginRight: isCollapsed ? "0" : "10px",
-            }}
+      <div className="w-full mt-10"> {/* sedikit dinaikkan dari semula 60px */}
+        {menu.map((item, i) => (
+          <button
+            key={i}
+            onClick={() => navigate(item.path)}
+            className={`w-full flex items-center ${
+              isCollapsed ? "justify-center" : "justify-start"
+            } bg-transparent border-none p-2.5 rounded-lg mb-2 cursor-pointer text-white transition-all duration-200 hover:bg-white/25`}
           >
-            {item.icon}
-          </span>
-
-          {!isCollapsed && <span>{item.label}</span>}
-        </button>
-      ))}
+            <span className={`text-2xl ${isCollapsed ? "mr-0" : "mr-2.5"}`}>
+              {item.icon}
+            </span>
+            {!isCollapsed && <span>{item.label}</span>}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

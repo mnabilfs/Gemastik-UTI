@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo1.png";
 import Avatar from "../assets/avatar.jpg";
 
 const Navbar = () => {
@@ -96,7 +96,7 @@ const Navbar = () => {
                   href="/chat"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Chat
+                  Setting
                 </a>
               </li>
               <li>

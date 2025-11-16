@@ -12,47 +12,47 @@ import {
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Navbar from "../components/Navbar";
+import Avatar from "../assets/avatar.jpg";
 
 const Account = () => {
   const [activeTab, setActiveTab] = useState("posts");
-  const [isFollowing, setIsFollowing] = useState(false);
 
   const blogPosts = [
     {
       id: 1,
-      title: "Memulai Perjalanan sebagai Developer",
+      title: "Sora AI: Masa Depan Video Generative",
       excerpt:
-        "Bagaimana saya memulai karir sebagai developer dan pelajaran yang saya dapatkan...",
+        "Sora AI mampu menghasilkan video realistis dari prompt teks sederhana. Teknologi ini mulai mengubah cara kreator membuat konten visual.",
       date: "10 November 2025",
       readTime: "5 min",
       likes: 234,
       comments: 18,
       image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop",
+        "https://cdn.ftvnews.com.tw/manasystem/FileData/News/19931769-90c3-4c40-8dc3-ec8a39c24457.jpg",
     },
     {
       id: 2,
-      title: "Tips Produktivitas untuk Developer",
+      title: "Notion AI: Asisten Cerdas untuk Produktivitas",
       excerpt:
-        "Beberapa tips dan trik yang membantu saya meningkatkan produktivitas dalam coding...",
+        "Notion AI membuat penulisan, peringkasan, dan ideasi jadi jauh lebih cepat. Cocok untuk pelajar, pekerja, dan kreator yang ingin efisiensi.",
       date: "5 November 2025",
       readTime: "8 min",
       likes: 456,
       comments: 32,
       image:
-        "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=250&fit=crop",
+        "https://preview.redd.it/what-are-your-thoughts-on-notion-ai-has-it-truly-simplified-v0-2telgdckvbmc1.jpg?width=400&format=pjpg&auto=webp&s=ca8fca67ac9c39e086571875be24b2988cf3af5a",
     },
     {
       id: 3,
-      title: "Belajar React dari Nol",
+      title: "Midjourney: Evolusi Seni Digital dengan AI",
       excerpt:
-        "Panduan lengkap untuk pemula yang ingin belajar React JavaScript...",
+        "Midjourney menghadirkan gambar berkualitas tinggi hanya dari deskripsi teks. Seniman dan desainer kini dapat membuat konsep visual jauh lebih cepat.",
       date: "28 Oktober 2025",
       readTime: "12 min",
       likes: 789,
       comments: 56,
       image:
-        "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop",
+        "https://assets.eweek.com/uploads/2024/09/ew_20240925-midjourney-review.png?w=1024",
     },
   ];
 
@@ -62,11 +62,11 @@ const Account = () => {
     { label: "Following", value: "186", icon: Users },
     { label: "Likes", value: "12.5K", icon: Heart },
   ];
-  
+
   return (
     <>
       <div className="min-h-screen bg-gray-50">
-        <Navbar/>
+        <Navbar />
         {/* Cover Image */}
         <div className="relative h-64 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600">
           <button className="absolute flex items-center px-4 py-2 space-x-2 text-black transition bg-white rounded-lg top-4 right-4 bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 hover:cursor-pointer">
@@ -82,10 +82,14 @@ const Account = () => {
               <div className="flex flex-col md:flex-row md:items-end md:space-x-6">
                 {/* Profile Picture */}
                 <div className="relative mb-4 -mt-20 md:mb-0">
-                  <div className="flex items-center justify-center w-32 h-32 text-4xl font-bold text-white border-4 border-white rounded-full shadow-xl bg-gradient-to-br from-purple-400 to-blue-500">
-                    MN
+                  <div className="w-32 h-32 overflow-hidden border-4 border-white rounded-full shadow-xl">
+                    <img
+                      src={Avatar}
+                      alt="Profile"
+                      className="object-cover w-full h-full"
+                    />
                   </div>
-                  <button className="absolute bottom-0 right-0 p-2 text-white transition bg-blue-500 rounded-full shadow-lg hover:bg-blue-600">
+                  <button className="absolute bottom-0 right-0 p-2 text-white transition bg-blue-500 rounded-full shadow-lg cursor-pointer hover:bg-blue-600">
                     <Camera className="w-4 h-4" />
                   </button>
                 </div>
@@ -100,17 +104,7 @@ const Account = () => {
                       <p className="text-gray-600">@mnabilfs22</p>
                     </div>
                     <div className="flex mt-3 space-x-3 md:mt-0">
-                      <button
-                        onClick={() => setIsFollowing(!isFollowing)}
-                        className={`px-6 py-2 rounded-lg font-semibold transition ${
-                          isFollowing
-                            ? "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                            : "bg-blue-500 text-white hover:bg-blue-600"
-                        }`}
-                      >
-                        {isFollowing ? "Following" : "Follow"}
-                      </button>
-                      <button className="flex items-center px-6 py-2 space-x-2 font-semibold text-gray-700 transition bg-gray-100 rounded-lg hover:bg-gray-200">
+                      <button className="flex items-center px-6 py-2 space-x-2 font-semibold text-gray-700 transition bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
                         <Edit2 className="w-4 h-4" />
                         <span>Edit Profile</span>
                       </button>
@@ -195,7 +189,7 @@ const Account = () => {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`py-4 px-2 font-semibold capitalize transition ${
+                    className={`py-4 px-2 font-semibold capitalize transition cursor-pointer ${
                       activeTab === tab
                         ? "text-blue-500 border-b-2 border-blue-500"
                         : "text-gray-600 hover:text-gray-900"
