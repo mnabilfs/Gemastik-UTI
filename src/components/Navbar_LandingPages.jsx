@@ -1,9 +1,38 @@
-import React, { useState } from "react";
+// src/components/Navbar_LandingPages.jsx (UPDATED)
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 
 const Navbar_LandingPage = () => {
+  const navigate = useNavigate();
   const [isExplorasiOpen, setIsExplorasiOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+
+  // Cek status login saat komponen dimuat
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      setIsLoggedIn(loggedIn);
+      setUserName(user.name || '');
+    };
+
+    checkLoginStatus();
+    
+    // Optional: Listen untuk perubahan localStorage (jika login di tab lain)
+    window.addEventListener('storage', checkLoginStatus);
+    return () => window.removeEventListener('storage', checkLoginStatus);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    setUserName('');
+    navigate('/');
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200">
@@ -116,21 +145,47 @@ const Navbar_LandingPage = () => {
 
         {/* RIGHT SECTION - BUTTONS */}
         <div className="hidden md:flex md:items-center md:space-x-3">
-          {/* Daftar Button */}
-          <button
-            type="button"
-            className="px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
-          >
-            Daftar
-          </button>
+          {isLoggedIn ? (
+            <>
+              {/* Dashboard Button */}
+              <button
+                onClick={() => navigate('/dashboard')}
+                type="button"
+                className="px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Dashboard
+              </button>
 
-          {/* Masuk Button */}
-          <button
-            type="button"
-            className="px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Masuk
-          </button>
+              {/* Logout Button */}
+              <button
+                onClick={handleLogout}
+                type="button"
+                className="px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+              >
+                Keluar
+              </button>
+            </>
+          ) : (
+            <>
+              {/* Daftar Button */}
+              <button
+                onClick={() => navigate('/register')}
+                type="button"
+                className="px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+              >
+                Daftar
+              </button>
+
+              {/* Masuk Button */}
+              <button
+                onClick={() => navigate('/login')}
+                type="button"
+                className="px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Masuk
+              </button>
+            </>
+          )}
         </div>
 
         {/* MOBILE MENU */}
@@ -206,18 +261,44 @@ const Navbar_LandingPage = () => {
 
               {/* Mobile Buttons */}
               <div className="flex flex-col space-y-2 pt-3">
-                <button
-                  type="button"
-                  className="w-full px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
-                >
-                  Daftar
-                </button>
-                <button
-                  type="button"
-                  className="w-full px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Masuk
-                </button>
+                {isLoggedIn ? (
+                  <>
+                    <span className="text-gray-700 font-medium">
+                      Halo, {userName.split(' ')[0]}
+                    </span>
+                    <button
+                      onClick={() => navigate('/dashboard')}
+                      type="button"
+                      className="w-full px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Dashboard
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      type="button"
+                      className="w-full px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+                    >
+                      Keluar
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => navigate('/register')}
+                      type="button"
+                      className="w-full px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+                    >
+                      Daftar
+                    </button>
+                    <button
+                      onClick={() => navigate('/login')}
+                      type="button"
+                      className="w-full px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Masuk
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
