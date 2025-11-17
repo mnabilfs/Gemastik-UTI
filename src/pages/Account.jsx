@@ -67,7 +67,6 @@ const Account = () => {
     <>
       <div className="min-h-screen bg-gray-50">
         <Navbar />
-        {/* Cover Image */}
         <div className="relative h-64 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600">
           <button className="absolute flex items-center px-4 py-2 space-x-2 text-black transition bg-white rounded-lg top-4 right-4 bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 hover:cursor-pointer">
             <Camera className="w-4 h-4" />
@@ -75,12 +74,10 @@ const Account = () => {
           </button>
         </div>
 
-        {/* Profile Info Section */}
         <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
           <div className="relative mb-6 -mt-20">
             <div className="p-6 bg-white shadow-lg rounded-2xl">
               <div className="flex flex-col md:flex-row md:items-end md:space-x-6">
-                {/* Profile Picture */}
                 <div className="relative mb-4 -mt-20 md:mb-0">
                   <div className="w-32 h-32 overflow-hidden border-4 border-white rounded-full shadow-xl">
                     <img
@@ -91,7 +88,6 @@ const Account = () => {
                   </div>
                 </div>
 
-                {/* Name and Bio */}
                 <div className="flex-1">
                   <div className="flex flex-col mb-3 md:flex-row md:items-center md:justify-between">
                     <div>
@@ -162,7 +158,6 @@ const Account = () => {
             </div>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-2 gap-4 mb-6 md:grid-cols-4">
             {stats.map((stat, idx) => (
               <div
@@ -178,7 +173,6 @@ const Account = () => {
             ))}
           </div>
 
-          {/* Tabs */}
           <div className="mb-6 bg-white shadow rounded-xl">
             <div className="border-b border-gray-200">
               <nav className="flex px-6 space-x-8">

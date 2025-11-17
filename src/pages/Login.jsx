@@ -45,7 +45,7 @@ const Login = () => {
       localStorage.setItem("isLoggedIn", "true");
 
       setIsLoading(false);
-      navigate("/dashboard");
+      navigate("/home");
     }, 1500);
   };
 

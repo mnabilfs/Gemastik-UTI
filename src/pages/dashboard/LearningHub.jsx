@@ -1,26 +1,23 @@
 import React from 'react';
-// PENTING: Import komponen Link dari React Router DOM
 import { Link } from 'react-router-dom'; 
 
-// --- Komponen Pembantu: LearningCard ---
-// Kini LearningCard menerima prop 'path' untuk tujuan navigasi
 const LearningCard = ({ title, subTitle, description, items, icon: Icon, color, bgColor, path }) => {
   return (
-    // Menggunakan komponen Link sebagai pembungkus utama kartu
+
     <Link 
-        to={path} // Path tujuan, yaitu '/notfound'
+        to={path} 
         style={{
-            // Styling Link agar terlihat seperti kartu
-            textDecoration: 'none', // Menghilangkan garis bawah default link
+
+            textDecoration: 'none', 
             color: 'inherit',
             display: 'block',
             height: '100%',
             
-            // Styling untuk efek hover (opsional, tapi disarankan)
+
             transition: 'transform 0.3s ease, box-shadow 0.3s ease',
             cursor: 'pointer',
         }}
-        // Pseudo-class styling menggunakan onMouseEnter/onMouseLeave atau library styling (disarankan)
+       
         onMouseEnter={(e) => {
              e.currentTarget.style.transform = 'translateY(-5px)';
              e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.15)';
@@ -40,7 +37,6 @@ const LearningCard = ({ title, subTitle, description, items, icon: Icon, color, 
             flexDirection: 'column',
             backgroundColor: '#ffffff'
         }}>
-            {/* Isi Kartu */}
             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
                 <div style={{ 
                     backgroundColor: bgColor, 
@@ -75,10 +71,8 @@ const LearningCard = ({ title, subTitle, description, items, icon: Icon, color, 
 };
 
 
-// --- Komponen Utama: LearningHub ---
 const LearningHub = () => {
 
-    // Data Lengkap dengan penambahan path: '/notfound'
     const modules = [
         {
             title: 'Basic AI', subTitle: 'Understanding', description: 'Memahami konsep dasar cara kerja AI dan model bahasa',
@@ -117,7 +111,6 @@ const LearningHub = () => {
                 gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 gap: '25px',
             }}>
-                {/* Melewatkan path ke LearningCard */}
                 {modules.map((module, index) => (
                     <LearningCard 
                         key={index}
@@ -128,7 +121,7 @@ const LearningHub = () => {
                         icon={module.icon}
                         color={module.color}
                         bgColor={module.bgColor}
-                        path={module.path} // Tambahkan prop path
+                        path={module.path} 
                     />
                 ))}
             </div>

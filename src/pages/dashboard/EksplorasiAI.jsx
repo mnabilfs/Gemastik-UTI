@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 
-// ==================== IMPORT GAMBAR ====================
 import bannerImg from "../../assets/topai.jpg";
 
-// Import Aset Gambar
 import art1 from "../../assets/gemini_pic.jpg";
 import art2 from "../../assets/claude_pic.jpg";
 import art3 from "../../assets/Aartikel3.jpg";
@@ -39,8 +37,7 @@ import author4 from "../../assets/DbzDevilAngelpfp.jpg";
 import author5 from "../../assets/DbzSubarupfp.jpg";
 import author6 from "../../assets/DbzZlogopfp.jpg";
 import author7 from "../../assets/DbzAccount_male.png";
-import author8 from "../../assets/DbzAccount_male.png";
-import author9 from "../../assets/DbzAccount_male.png";
+
 
 // ==================== DATA ARTIKEL ====================
 const articles = [
@@ -82,20 +79,19 @@ export default function EksplorasiAI() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  // Perubahan 1: Mengatur nilai awal cardsPerPage menjadi 8
   const [cardsPerPage, setCardsPerPage] = useState(8); 
 
   const navigate = useNavigate();
 
   const categories = ["All", "Chatbots", "Coding AI", "Creative AI", "Productivity AI"];
 
-  // ==================== RESPONSIVE CARD PER PAGE (DIUBAH KE 8 PADA LAYAR BESAR) ====================
+
   useEffect(() => {
     const updateCards = () => {
       if (window.innerWidth < 640) {
-        setCardsPerPage(2); // mobile
+        setCardsPerPage(2); 
       } else {
-        // Perubahan 2: Mengatur cardsPerPage menjadi 8 untuk layar besar
+        
         setCardsPerPage(8); 
       }
     };
@@ -105,7 +101,7 @@ export default function EksplorasiAI() {
     return () => window.removeEventListener("resize", updateCards);
   }, []);
 
-  // ==================== FILTER ====================
+
   const filteredArticles = articles.filter((item) => {
     const matchCategory = activeCategory === "All" || item.category === activeCategory;
     const matchSearch = item.title.toLowerCase().includes(search.toLowerCase());
@@ -115,22 +111,19 @@ export default function EksplorasiAI() {
   const totalPages = Math.ceil(filteredArticles.length / cardsPerPage);
   const paginated = filteredArticles.slice((page - 1) * cardsPerPage, page * cardsPerPage);
 
-// ==================== FUNGSI PAGINASI DENGAN ELLIPSIS ====================
-/**
- * Menghasilkan array tombol paginasi, termasuk angka halaman dan '...'
- * Untuk mencapai format: < 1 2 3 ... N >
- */
+
+
   const getPaginationButtons = () => {
     const buttons = [];
-    const maxButtonsToShow = 5; // Total tombol, e.g., 1 ... 3 4 5 ... N
+    const maxButtonsToShow = 5; 
     
     if (totalPages <= maxButtonsToShow) {
-      // Tampilkan semua tombol jika total halaman kecil
+      
       for (let i = 1; i <= totalPages; i++) {
         buttons.push(i);
       }
     } else {
-      buttons.push(1); // Selalu tombol 1
+      buttons.push(1); 
 
       // Menentukan jendela halaman yang akan ditampilkan di tengah
       let start = Math.max(2, page - 1);
@@ -169,33 +162,33 @@ export default function EksplorasiAI() {
     // Hapus duplikat dan kembalikan urutan yang unik
     return [...new Set(buttons)].filter(p => p !== '...' || buttons.indexOf(p) === buttons.lastIndexOf(p));
   };
-// ===========================================================================
+
 
   return (
-    <div className="px-6 md:px-12 lg:px-16 w-full">
+    <div className="w-full px-6 md:px-12 lg:px-16">
 
-      {/* ==================== BANNER ==================== */}
+
       <div
         onClick={() => navigate("/notfound")}
-        className="flex items-center bg-gray-100 rounded-xl p-5 mb-10 gap-6 cursor-pointer hover:shadow-lg transition"
+        className="flex items-center gap-6 p-5 mb-10 transition bg-gray-100 cursor-pointer rounded-xl hover:shadow-lg"
       >
-        <img src={bannerImg} className="w-44 h-32 rounded-lg object-cover" alt="Banner" />
+        <img src={bannerImg} className="object-cover h-32 rounded-lg w-44" alt="Banner" />
 
         <div>
-          <h3 className="text-lg font-bold mb-1">Top AI of The Week</h3>
-          <p className="text-gray-600 text-sm">Pilihan AI terbaik berdasarkan tren terbaru.</p>
+          <h3 className="mb-1 text-lg font-bold">Top AI of The Week</h3>
+          <p className="text-sm text-gray-600">Pilihan AI terbaik berdasarkan tren terbaru.</p>
 
           <button
             onClick={() => navigate("/notfound")}
-            className="mt-3 px-5 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition cursor-pointer"
+            className="px-5 py-2 mt-3 text-sm text-white transition bg-blue-600 rounded-full cursor-pointer hover:bg-blue-700"
           >
             Learn More →
           </button>
         </div>
       </div>
 
-      {/* ==================== TITLE + SEARCH ==================== */}
-      <div className="flex justify-between items-center mb-6">
+
+      <div className="flex items-center justify-between mb-6">
         <h2 className="text-3xl font-bold">Explore</h2>
 
         <div className="relative">
@@ -204,13 +197,13 @@ export default function EksplorasiAI() {
             placeholder="Search AI models..."
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-            className="border border-gray-300 rounded-lg pl-4 pr-10 py-2 w-72 text-sm"
+            className="py-2 pl-4 pr-10 text-sm border border-gray-300 rounded-lg w-72"
           />
-          <IoSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500" />
+          <IoSearch className="absolute text-gray-500 -translate-y-1/2 right-3 top-1/2" />
         </div>
       </div>
 
-      {/* ==================== CATEGORY ==================== */}
+
       <div className="mb-8">
         <div className="inline-flex justify-start gap-6 border-b border-gray-300"> 
           {categories.map((cat) => (
@@ -229,7 +222,7 @@ export default function EksplorasiAI() {
         </div>
       </div>
 
-      {/* ==================== GRID (KARTU) - 4 KOLOM, 8 PER HALAMAN ==================== */}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
         
         {paginated.map((item) => (
@@ -238,29 +231,26 @@ export default function EksplorasiAI() {
             className="p-4 transition-all duration-300 transform bg-white border border-gray-200 shadow cursor-pointer rounded-xl hover:scale-105 hover:shadow-lg active:scale-100"
             onClick={() => item.id === 1 ? navigate("/blog/gemini-ai") : navigate("/notfound")}
           >
-            {/* Gambar (h-40) */}
+
             <img
               src={item.img}
               alt={item.title}
               className="object-cover w-full h-40 mb-4 rounded-lg"
             />
 
-            {/* Tanggal (text-blue-900) */}
+           
             <p className="pb-2 text-sm font-medium text-blue-900">
               {item.date}
             </p>
 
-            {/* Judul: Tanpa line-clamp agar tidak terpotong */}
             <h5 className="pb-3 font-semibold text-gray-900 text-md">
               {item.title}
             </h5>
             
-            {/* Deskripsi: Tanpa line-clamp agar tidak terpotong */}
             <p className="pb-3 mb-2 text-sm text-gray-700">
               {item.description}
             </p>
 
-            {/* Author (w-6 h-6, text-xs, blue link) */}
             <div className="flex items-center gap-2 mt-3"> 
               <img src={item.authorImg} className="w-6 h-6 rounded-full" alt="author" />
               <p className="text-xs font-medium text-blue-900 hover:underline">
@@ -272,22 +262,17 @@ export default function EksplorasiAI() {
 
       </div>
 
-      {/* ==================== PAGINATION REVISI FINAL ==================== */}
-      {/* **PERUBAHAN:** Menghapus kondisi totalPages > 1 agar paginasi tetap muncul 
-             bahkan di kategori yang hanya memiliki 1 halaman. 
-             (Kita ganti dengan kondisi: tampilkan jika ada artikel yang terfilter) */}
+
       {filteredArticles.length > 0 && (
-        <div className="flex justify-center items-center gap-1 mt-10 text-sm"> 
-          {/* Tombol Sebelumnya (◀) */}
+        <div className="flex items-center justify-center gap-1 mt-10 text-sm"> 
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="w-10 h-10 flex items-center justify-center text-blue-600 bg-transparent rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className="flex items-center justify-center w-10 h-10 text-blue-600 transition bg-transparent rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             &lt;
           </button>
 
-          {/* Tombol Paginasi Utama */}
           {getPaginationButtons().map((p, index) => (
             <button
               key={index}
@@ -298,12 +283,9 @@ export default function EksplorasiAI() {
                 ${
                   typeof p === 'number'
                   ? page === p 
-                    // Gaya Tombol Aktif (Pill Biru Muda, Teks Biru Tua)
                     ? "bg-blue-100 text-blue-600 rounded-xl font-bold"
-                    // Gaya Tombol Tidak Aktif (Hanya Teks Abu-abu)
                     : "bg-transparent text-gray-500 rounded-full hover:bg-gray-100"
                   : 
-                    // Gaya Ellipsis (...)
                     "bg-transparent text-gray-500 cursor-default"
                 }
               `}
@@ -312,11 +294,10 @@ export default function EksplorasiAI() {
             </button>
           ))}
 
-          {/* Tombol Selanjutnya (▶) */}
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="w-10 h-10 flex items-center justify-center text-blue-600 bg-transparent rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className="flex items-center justify-center w-10 h-10 text-blue-600 transition bg-transparent rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             &gt;
           </button>

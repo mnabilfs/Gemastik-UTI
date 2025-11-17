@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 const Hero_LandingPage = () => {
   const navigate = useNavigate(); // TAMBAHKAN INI
   const floatingIcons = [
-    //Untuk Blok Kosong Kiri
     {
       id: 1,
       position: "top-[160px] left-[-25px]",
@@ -420,11 +419,9 @@ const Hero_LandingPage = () => {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center justify-center py-20 px-4">
-      {/* Solid Background - warna asli */}
+    <section className="relative flex items-center justify-center min-h-screen px-4 py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700"></div>
 
-      {/* Batik Pattern 1 - Motif Kawung*/}
       <div
         className="absolute inset-0 opacity-3"
         style={{
@@ -433,7 +430,6 @@ const Hero_LandingPage = () => {
         }}
       ></div>
 
-      {/* Batik Pattern 2 - Motif Parang*/}
       <div
         className="absolute inset-0 opacity-3"
         style={{
@@ -443,7 +439,6 @@ const Hero_LandingPage = () => {
         }}
       ></div>
 
-      {/* Subtle texture dots */}
       <div
         className="absolute inset-0 opacity-3"
         style={{
@@ -452,7 +447,6 @@ const Hero_LandingPage = () => {
         }}
       ></div>
 
-      {/* Floating AI Icons */}
       {floatingIcons.map((icon, index) => {
         const nonInteractiveIds = [1, 2, 3, 4, 11, 12, 13];
         const isNonInteractive = nonInteractiveIds.includes(icon.id);
@@ -510,7 +504,7 @@ const Hero_LandingPage = () => {
             }
           >
             <div
-              className="w-full h-full flex items-center justify-center p-3"
+              className="flex items-center justify-center w-full h-full p-3"
               style={{
                 ...icon.containerStyle,
                 pointerEvents: isNonInteractive ? "none" : undefined,
@@ -521,7 +515,7 @@ const Hero_LandingPage = () => {
                 <img
                   src={icon.src}
                   alt={icon.alt}
-                  className="w-full h-full object-contain"
+                  className="object-contain w-full h-full"
                   style={{
                     ...icon.imageStyle,
                     pointerEvents: isNonInteractive ? "none" : undefined,
@@ -534,10 +528,8 @@ const Hero_LandingPage = () => {
         );
       })}
 
-      {/* Main Content Card */}
-      <div className="relative z-10 max-w-3xl w-full">
-        <div className="rounded-3xl p-12 md:p-25 text-center relative">
-          {/* Background dengan animasi fade-in-out */}
+      <div className="relative z-10 w-full max-w-3xl">
+        <div className="relative p-12 text-center rounded-3xl md:p-25">
           <div
             className="absolute inset-0 rounded-3xl fade-in-out"
             style={{
@@ -548,33 +540,28 @@ const Hero_LandingPage = () => {
             }}
           ></div>
 
-          {/* Content - Tidak terpengaruh animasi */}
           <div className="relative z-10">
-            {/* Main Heading */}
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-600 bg-clip-text text-transparent drop-shadow-lg">
+            <h1 className="mb-6 text-4xl font-bold text-transparent md:text-6xl bg-gradient-to-r from-teal-400 via-cyan-500 to-teal-600 bg-clip-text drop-shadow-lg">
               Jelajahi AI Bersama Kami
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-gray-300 text-lg md:text-lg mb-8 font-medium leading-relaxed">
+            <p className="mb-8 text-lg font-medium leading-relaxed text-gray-300 md:text-lg">
               Artikel ringan, panduan praktis, dan rekomendasi
               <br />
               tools AI untuk dipakai sehari-hari.
             </p>
 
-            {/* CTA Button - UPDATED dengan onClick */}
             <button
               onClick={() => {
-                // Cek apakah sudah login
                 const isLoggedIn =
                   localStorage.getItem("isLoggedIn") === "true";
                 if (isLoggedIn) {
-                  navigate("/dashboard");
+                  navigate("/home");
                 } else {
                   navigate("/login");
                 }
               }}
-              className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="px-8 py-4 font-semibold text-white transition-all duration-300 transform bg-blue-700 shadow-lg hover:bg-blue-800 rounded-xl hover:shadow-xl hover:scale-105"
             >
               Mulai Membaca
             </button>

@@ -55,7 +55,7 @@ const Rekomendasi = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     if (isLoggedIn) {
       // Jika sudah login, bisa navigate ke halaman detail artikel
-      navigate("/dashboard");
+      navigate("/home");
     } else {
       // Jika belum login, arahkan ke halaman login
       navigate("/login");
@@ -68,17 +68,17 @@ const Rekomendasi = () => {
 
       {/* Hero Section - Sesuai Figma */}
       <section className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 items-center">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-center gap-6 md:grid-cols-2">
             {/* Left Content */}
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-4xl">
                 Mengetahui Seputar Kecerdasan Buatan Yang Bisa{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                <span className="text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text">
                   Digunakan Sehari-hari
                 </span>
               </h1>
-              <p className="text-lg md:text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg leading-relaxed text-gray-600 md:text-lg">
                 Rekomendasi kami berisi informasi Kecerdasan Buatan yang bisa
                 digunakan dalam kehidupan sehari-hari. Memberikan recomendasi
                 terbaik, agar kita tidak kebingungan di era digital saat ini.
@@ -91,7 +91,7 @@ const Rekomendasi = () => {
                 src={AIRekomendasiGif}
                 alt="AI Rekomendasi Animation"
                 style={{ width: "500px", maxWidth: "100%" }}
-                className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                className="transition-transform duration-300 transform shadow-2xl rounded-2xl hover:scale-105"
               />
             </div>
           </div>
@@ -99,29 +99,29 @@ const Rekomendasi = () => {
       </section>
 
       {/* Rekomendasi Cards Section */}
-      <section className="px-4 py-12 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-4 py-12 bg-white sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
           {/* Section Header */}
           <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
               Beberapa List <span className="text-blue-600">Recomendasi</span>
             </h2>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {rekomendasiData.map((item) => (
               <div
                 key={item.id}
                 onClick={handleCardClick}
-                className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 border border-gray-200 group"
+                className="overflow-hidden transition-all duration-300 transform bg-white border border-gray-200 shadow-md cursor-pointer rounded-3xl hover:shadow-2xl hover:-translate-y-2 group"
               >
                 {/* Image Section */}
-                <div className="relative h-52 overflow-hidden bg-gray-100">
+                <div className="relative overflow-hidden bg-gray-100 h-52">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                   />
                   {/* Category Badge */}
                   <div className="absolute bottom-4 left-4">
@@ -133,10 +133,10 @@ const Rekomendasi = () => {
 
                 {/* Content Section */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                  <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors line-clamp-2 group-hover:text-blue-600">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  <p className="text-sm leading-relaxed text-gray-600 line-clamp-3">
                     {item.description}
                   </p>
                 </div>
@@ -147,7 +147,7 @@ const Rekomendasi = () => {
                     <img
                       src={item.authorImage}
                       alt={item.author}
-                      className="w-11 h-11 rounded-full object-cover border-2 border-blue-100 shadow-sm"
+                      className="object-cover border-2 border-blue-100 rounded-full shadow-sm w-11 h-11"
                     />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-gray-900 truncate">

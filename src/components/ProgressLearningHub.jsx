@@ -10,7 +10,7 @@ const ProgressLearningHub = () => {
               Total Bacaan Minggu ini
             </div>
             <div className="w-full h-3 overflow-hidden bg-gray-100 rounded-full">
-              <div className="w-3/5 h-3 bg-blue-500" /> {/* 60% */}
+              <div className="w-3/5 h-3 bg-blue-500" /> 
             </div>
             <div className="mt-2 text-xs text-gray-500">15/25</div>
           </div>

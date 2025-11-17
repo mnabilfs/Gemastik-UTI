@@ -24,7 +24,6 @@ const Internship = () => {
 
       <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#f5f7fa" }}>
         
-        {/* ================= SIDEBAR ================= */}
         <div
           style={{
             width: isCollapsed ? "80px" : "220px",
@@ -41,7 +40,6 @@ const Internship = () => {
             top: 0,
           }}
         >
-          {/* Tombol Collapse */}
           <button
             onClick={toggleSidebar}
             style={{

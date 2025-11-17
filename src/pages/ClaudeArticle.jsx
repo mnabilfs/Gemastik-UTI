@@ -19,7 +19,6 @@ import PhotoProfile1 from "../assets/pp_3.jpg";
 import PhotoProfile2 from "../assets/pp_1.jpg";
 import PhotoProfile3 from "../assets/pp_2.jpg";
 
-// Data tiruan untuk card
 const relatedPostsData = [
   {
     imgSrc: ChatGPTPic,
@@ -31,7 +30,7 @@ const relatedPostsData = [
     link: "/blog/chatgpt-ai",
   },
   {
-    imgSrc: DeepseekPic, // Ganti dengan path gambar Anda
+    imgSrc: DeepseekPic, 
     date: "November 3, 2025",
     title: "DeepSeek AI: Kecepatan, Efisiensi, dan Ketelitian dari Model Cina",
     description:
@@ -40,7 +39,7 @@ const relatedPostsData = [
     link: "/blog/deepseek-ai",
   },
   {
-    imgSrc: QwenPic, // Ganti dengan path gambar Anda
+    imgSrc: QwenPic, 
     date: "November 5, 2025",
     title: "Qwen AI: Inovasi Open-Source dari Alibaba",
     description:
@@ -54,7 +53,6 @@ const ArticleHeader = () => {
   return (
     <section className="bg-white border-gray-200 ">
       <div className="max-w-4xl px-4 py-10 mx-auto sm:px-6 lg:px-8">
-        {/* Baris Meta: Tag, Tanggal, Penulis */}
         <div className="flex flex-wrap items-center mb-6 gap-x-4 gap-y-2">
           <a
             href="https://claude.ai/"
@@ -74,15 +72,12 @@ const ArticleHeader = () => {
           <span className="text-sm text-gray-600 ">M. Zacky Maulana</span>
         </div>
 
-        {/* Judul Utama Artikel */}
         <h1 className="py-8 mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
           Kenapa Banyak Orang Memilih Claude? Kebiasaan Pengguna AI Modern dan
           Kekuatan Claude dalam Produktivitas
         </h1>
 
-        {/* Baris Bawah: Ringkasan dan Bagikan */}
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          {/* Kiri: Dapatkan ringkasan */}
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-700 ">
               Dapatkan ringkasan:
@@ -95,7 +90,6 @@ const ArticleHeader = () => {
             </div>
           </div>
 
-          {/* Kanan: Bagikan */}
           <div className="flex items-center gap-3">
             <div className="text-sm font-medium text-gray-700 ">Share:</div>
             <div className="flex items-center gap-3 text-gray-600 ">
@@ -135,7 +129,6 @@ const ArticleHeader = () => {
   );
 };
 
-// Komponen untuk Gambar Utama (Thumbnail Video)
 const FeaturedImage = () => (
   <div className="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
     <img
@@ -146,7 +139,6 @@ const FeaturedImage = () => (
   </div>
 );
 
-// Komponen untuk 3 Card Terkait
 const RelatedPosts = () => {
   const navigate = useNavigate();
 
@@ -198,7 +190,6 @@ const RelatedPosts = () => {
   );
 };
 
-// Komponen untuk Konten Artikel Utama
 const ArticleContent = () => (
   <article className="max-w-4xl px-4 py-12 mx-auto prose sm:px-6 lg:px-8 lg:prose-xl">
     <h2 className="mb-4 text-3xl font-bold text-blue-900">
@@ -621,7 +612,6 @@ const QuestionFAQ = () => (
 const Comments = () => {
   const commentSectionRef = useRef(null);
   const [lastUserName, setLastUserName] = useState("");
-  // Data komentar awal
   const [comments, setComments] = useState([
     {
       id: 1,
@@ -773,7 +763,6 @@ const Comments = () => {
                 </button>
               </div>
 
-              {/* Form Balasan */}
               {replyingTo === comment.id && (
                 <form
                   onSubmit={(e) => handleReplySubmit(e, comment.id)}
@@ -796,7 +785,6 @@ const Comments = () => {
               )}
             </article>
 
-            {/* Balasan */}
             {comment.replies?.length > 0 && (
               <div className="mt-3 ml-6 space-y-4 lg:ml-12">
                 {comment.replies.map((reply) => (
@@ -828,7 +816,6 @@ const Comments = () => {
         ))}
       </div>
 
-      {/* Form Komentar Utama */}
       <h3 className="mt-12 mb-4 text-3xl font-bold text-blue-900">
         Tinggalkan Komentar
       </h3>

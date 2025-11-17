@@ -2,9 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Avatar from "../assets/avatar.jpg";
 
-// --- Icon SVGs (untuk ditaruh di dalam komponen) ---
 
-// Ikon untuk 'lihat password' (Mata)
 const EyeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +21,6 @@ const EyeIcon = () => (
   </svg>
 );
 
-// Ikon untuk 'edit' (Pensil)
 const EditIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -41,21 +38,15 @@ const EditIcon = () => (
 );
 
 
-// --- Komponen Halaman Utama ---
 export default function SettingsPage() {
   return (
-    // Latar belakang halaman
     <div className="min-h-screen bg-gray-100">
-      {/* 1. Navbar Anda di bagian atas (full-width) */}
       <Navbar />
       
-      {/* Kontainer utama yang menengahkan konten */}
       <div className="p-4 sm:p-8">
         
-        {/* 2. Satu Kontainer Putih untuk SEMUA pengaturan */}
         <div className="max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-md sm:p-8">
           
-          {/* === BAGIAN PROFILE (Gambar 2) === */}
           <div>
             <h2 className="mb-2 text-2xl font-bold text-gray-800">Profile</h2>
             <p className="mb-6 text-gray-500">
@@ -63,7 +54,6 @@ export default function SettingsPage() {
             </p>
 
             <form className="space-y-6">
-              {/* Avatar */}
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-700">
                   Avatar
@@ -83,7 +73,6 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              {/* Username */}
               <div>
                 <label
                   htmlFor="username"
@@ -99,7 +88,6 @@ export default function SettingsPage() {
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
@@ -115,7 +103,6 @@ export default function SettingsPage() {
                 />
               </div>
 
-              {/* Full Name */}
               <div>
                 <label
                   htmlFor="full_name"
@@ -135,7 +122,6 @@ export default function SettingsPage() {
                 </p>
               </div>
 
-              {/* Tombol Simpan */}
               <div className="flex justify-end pt-2">
                 <button
                   type="submit"
@@ -147,14 +133,11 @@ export default function SettingsPage() {
             </form>
           </div>
           
-          {/* === PEMISAH === */}
           <hr className="my-8 border-gray-200" />
 
-          {/* === BAGIAN UBAH PASSWORD (Gambar 1) === */}
           <div>
             <div className="flex flex-col gap-8 lg:flex-row">
               
-              {/* Bagian Kiri: Form */}
               <div className="flex-1">
                 <h2 className="mb-2 text-2xl font-bold text-gray-800">
                   Ubah Password
@@ -176,7 +159,7 @@ export default function SettingsPage() {
                         type="password"
                         id="old_password"
                         placeholder="Masukkan password lama"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" // UBAH: teal -> blue
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
                       />
                       <span className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
                         <EyeIcon />
@@ -196,7 +179,7 @@ export default function SettingsPage() {
                         type="password"
                         id="new_password"
                         placeholder="Masukkan password baru"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" // UBAH: teal -> blue
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
                       />
                       <span className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
                         <EyeIcon />
@@ -216,7 +199,7 @@ export default function SettingsPage() {
                         type="password"
                         id="confirm_password"
                         placeholder="Masukkan konfirmasi password baru"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" // UBAH: teal -> blue
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
                       />
                       <span className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
                         <EyeIcon />
@@ -227,7 +210,7 @@ export default function SettingsPage() {
                   <div>
                     <button
                       type="submit"
-                      className="px-5 py-2 text-white bg-blue-600 rounded-md cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" // UBAH: teal -> blue
+                      className="px-5 py-2 text-white bg-blue-600 rounded-md cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" 
                     >
                       Update Password
                     </button>

@@ -6,14 +6,11 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b border-gray-200">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-        {/* LOGO */}
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-10" alt="Human After Tech Logo" />
         </a>
 
-        {/* RIGHT SECTION */}
         <div className="flex items-center space-x-5 md:order-2">
-          {/* SUN ICON */}
           <button
             type="button"
             className="flex items-center justify-center text-gray-900 cursor-pointer hover:text-gray-500 focus:outline-none"
@@ -61,7 +58,6 @@ const Navbar = () => {
             />
           </button>
 
-          {/* DROPDOWN */}
           <div
             className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
             id="user-dropdown"

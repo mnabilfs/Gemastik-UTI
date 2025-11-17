@@ -9,8 +9,6 @@ import QwenArticle from "./pages/QwenArticle";
 import LandingPages from "./pages/LandingPages";
 
 import Account from "./pages/Account";
-import Chat from "./pages/Chat";
-import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import TentangKami from "./pages/TentangKami";
@@ -36,8 +34,6 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-
-
 function App() {
   return (
     <>
@@ -51,12 +47,10 @@ function App() {
             <Route path="/internship" element={<Internship />} />
             <Route path="/learning-hub" element={<LearningHub />} />
             <Route path="/aktifitas" element={<Aktivitas />} />
-            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
 
-          <Route path="/account" element={<Account />} />
           <Route path="/settings" element={<Setting />} />
-            
+
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/gemini-ai" element={<GeminiArticle />} />
           <Route path="/blog/chatgpt-ai" element={<ChatGPTArticle />} />
@@ -75,7 +69,13 @@ function App() {
             path="/home"
             element={
               <ProtectedRoute>
-                <Home />
+                <Route element={<MainLayout />}>
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/eksplorasi-ai" element={<EksplorasiAI />} />
+                  <Route path="/internship" element={<Internship />} />
+                  <Route path="/learning-hub" element={<LearningHub />} />
+                  <Route path="/aktifitas" element={<Aktivitas />} />
+                </Route>
               </ProtectedRoute>
             }
           />

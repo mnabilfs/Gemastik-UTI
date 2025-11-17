@@ -82,7 +82,6 @@ export default function Home() {
   return (
     <div className="w-full p-6">
 
-      {/* CARD PROFILE (FULL) */}
       <div className="mb-6">
         <div className="inline-flex items-center gap-4 px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm">
           <img
@@ -99,21 +98,17 @@ export default function Home() {
         </div>
       </div>
 
-      {/*  GRID UTAMA → Statistik kiri + Progress & TopAI kanan */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {/* Kolom kiri (span 2) */}
         <div className="space-y-6 lg:col-span-2">
           <StatistikBaca />
         </div>
 
-        {/* Kolom kanan */}
         <div className="space-y-6">
           <ProgressLearningHub />
           <TopAiTheWeek />
         </div>
       </div>
 
-      {/* BERITA AI TERKINI (FULL) */}
       <div className="mt-10">
         <h3 className="mb-4 text-lg font-semibold text-gray-900">
           Berita AI Terkini
@@ -146,7 +141,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Left Arrow */}
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-sm -bottom-4 w-9 h-9 hover:bg-gray-50 bottom-[-32px] cursor-pointer"
@@ -154,7 +148,6 @@ export default function Home() {
             <FaChevronLeft className="text-gray-600" />
           </button>
 
-          {/* Right Arrow */}
           <button
             onClick={() => scroll("right")}
             className="absolute flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-sm -bottom-4 left-12 w-9 h-9 hover:bg-gray-50 bottom-[-32px] cursor-pointer"

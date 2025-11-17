@@ -11,16 +11,12 @@ const MainLayout = () => {
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
       
-      {/* NAVBAR SELALU DI ATAS & FULL WIDTH */}
       <Navbar toggleSidebar={toggleSidebar} />
 
-      {/* CONTENT AREA */}
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         
-        {/* SIDEBAR DI KIRI */}
         <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
 
-        {/* HALAMAN UTAMA */}
         <div style={{ flex: 1, overflowY: "auto", padding: "20px" }}>
           <Outlet />
         </div>

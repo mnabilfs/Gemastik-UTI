@@ -26,7 +26,6 @@ import PhotoProfile1 from "../assets/pp_0.jpg";
 import PhotoProfile2 from "../assets/pp_1.jpg";
 import PhotoProfile3 from "../assets/pp_2.jpg";
 
-// Data tiruan untuk card
 const relatedPostsData = [
   {
     imgSrc: ChatGPTPic,
@@ -38,7 +37,7 @@ const relatedPostsData = [
     link: "/blog/chatgpt-ai",
   },
   {
-    imgSrc: ClaudePic, // Ganti dengan path gambar Anda
+    imgSrc: ClaudePic, 
     date: "November 3, 2025",
     title:
       "Kenapa Banyak Orang Memilih Claude? Kebiasaan Pengguna AI Modern dan Kekuatan Claude dalam Produktivitas",
@@ -48,7 +47,7 @@ const relatedPostsData = [
     link: "/blog/claude-ai",
   },
   {
-    imgSrc: QwenPic, // Ganti dengan path gambar Anda
+    imgSrc: QwenPic, 
     date: "November 5, 2025",
     title: "Qwen AI: Inovasi Open-Source dari Alibaba",
     description:
@@ -85,19 +84,15 @@ const ArticleHeader = () => {
           <span className="text-sm text-gray-600 ">M. Nabil Farras S.</span>
 
           <div className="flex items-center gap-4 ml-auto">
-            {/* Tombol Sukai */}
             <button
-              // 5. Tambahkan onClick untuk mengubah state
               onClick={() => setIsLiked(!isLiked)}
-              // 4. Ubah class secara dinamis berdasarkan state
               className={`flex items-center gap-1.5 transition-colors duration-150 cursor-pointer
                         ${
                           isLiked
-                            ? "text-red-600" // State aktif (merah)
-                            : "text-gray-600 hover:text-red-600" // State non-aktif
+                            ? "text-red-600" 
+                            : "text-gray-600 hover:text-red-600" 
                         }`}
             >
-              {/* 4. Ganti ikon secara dinamis */}
               {isLiked ? (
                 <HiHeart className="w-5 h-5" /> // Ikon terisi
               ) : (
@@ -108,21 +103,18 @@ const ArticleHeader = () => {
 
             {/* Tombol Simpan */}
             <button
-              // 5. Tambahkan onClick untuk mengubah state
               onClick={() => setIsSaved(!isSaved)}
-              // 4. Ubah class secara dinamis berdasarkan state
               className={`flex items-center gap-1.5 transition-colors duration-150 cursor-pointer
                         ${
                           isSaved
-                            ? "text-blue-600" // State aktif (biru)
-                            : "text-gray-600 hover:text-blue-600" // State non-aktif
+                            ? "text-blue-600" 
+                            : "text-gray-600 hover:text-blue-600" 
                         }`}
             >
-              {/* 4. Ganti ikon secara dinamis */}
               {isSaved ? (
-                <HiBookmark className="w-5 h-5" /> // Ikon terisi
+                <HiBookmark className="w-5 h-5" /> 
               ) : (
-                <HiOutlineBookmark className="w-5 h-5" /> // Ikon outline
+                <HiOutlineBookmark className="w-5 h-5" /> 
               )}
               <span className="text-sm font-medium">Simpan</span>
             </button>

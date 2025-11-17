@@ -26,11 +26,10 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
       } bg-[#268AFD] h-screen relative p-5 transition-width duration-300`}
       style={{ width: isCollapsed ? "80px" : "220px" }}
     >
-      {/* Toggle Button (di samping Home, lebih atas) */}
       <button
         onClick={toggleSidebar}
         className="absolute right-[-16px] bg-white border border-gray-300 rounded-full w-8 h-8 flex items-center justify-center shadow-md z-10 cursor-pointer"
-        style={{ top: "30px" }} // posisi dinaikkan agar lebih dekat dengan Home
+        style={{ top: "30px" }} 
       >
         <FaChevronRight
           className={`w-4.5 h-4.5 text-[#268AFD] transition-transform duration-300 ${
@@ -39,8 +38,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         />
       </button>
 
-      {/* Menu Items */}
-      <div className="w-full mt-10"> {/* sedikit dinaikkan dari semula 60px */}
+      <div className="w-full mt-10"> 
         {menu.map((item, i) => (
           <button
             key={i}

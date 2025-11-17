@@ -80,9 +80,7 @@ export default function Aktivitas() {
 
   return (
     <div className="w-full p-6">
-      {/* TOP PROFILE + STATS */}
       <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-4">
-        {/* CARD PROFILE (FOLLOWING YOUR STYLE) */}
         <div className="inline-flex items-center gap-4 px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm">
           <img
             src={Avatar}
@@ -97,35 +95,28 @@ export default function Aktivitas() {
           </div>
         </div>
 
-        {/* STAT BOX 1 */}
         <div className="flex flex-col justify-center px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm">
           <span className="text-sm text-gray-600">Blog Tersimpan</span>
           <span className="ml-1 text-lg font-semibold text-blue-600">1</span>
         </div>
 
-        {/* STAT BOX 2 */}
         <div className="flex flex-col justify-center px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm">
           <span className="text-sm text-gray-600">Blog Disukai</span>
           <span className="ml-1 text-lg font-semibold text-blue-600">1</span>
         </div>
 
-        {/* STAT BOX 3 */}
         <div className="flex flex-col justify-center px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm">
           <span className="text-sm text-gray-600">Rating Blog</span>
           <span className="ml-1 text-lg font-semibold text-blue-600">1</span>
         </div>
       </div>
 
-      {/* HISTORY */}
       <Section title="Riwayat" items={historyItems} />
 
-      {/* BLOG TERSIMPAN */}
       <Section title="Blog Tersimpan" items={savedItems} />
 
-      {/* BLOG DISUKAI */}
       <Section title="Blog Disukai" items={likedItems} />
 
-      {/* BLOG RATING */}
       <Section title="Rating Blog" items={ratingItems} />
     </div>
   );
