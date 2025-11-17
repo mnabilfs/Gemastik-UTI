@@ -2,7 +2,7 @@
 import React from "react";
 import Navbar_LandingPage from "../components/Navbar_LandingPages";
 import { Users, Target, Eye, Zap, Award, Heart } from "lucide-react";
-import AIImage from "../assets/AI_TentangKami1.webp";
+import AIImage from "../assets/AI_TentangKami1.gif";
 
 const TentangKami = () => {
   return (
@@ -27,7 +27,7 @@ const TentangKami = () => {
               src={AIImage}
               alt="AI Technology Illustration"
               className="rounded-2xl shadow-xl object-cover"
-              style={{ width: "930px", height: "360px" }}
+              style={{ width: "930px", height: "400px" }}
             />
           </div>
         </div>
