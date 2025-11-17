@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo1.png";
 import Avatar from "../assets/avatar.jpg";
 
 const Navbar = () => {
@@ -43,9 +43,7 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <span className="text-lg text-gray-300 select-none">
-            |
-          </span>
+          <span className="text-lg text-gray-300 select-none">|</span>
 
           <button
             type="button"
@@ -69,7 +67,9 @@ const Navbar = () => {
             id="user-dropdown"
           >
             <div className="px-4 py-3">
-              <span className="block text-sm text-gray-900">Muhammad Nabil F S</span>
+              <span className="block text-sm text-gray-900">
+                Muhammad Nabil F S
+              </span>
               <span className="block text-sm text-gray-500 truncate">
                 mnabilfs@gmail.com
               </span>
@@ -77,10 +77,10 @@ const Navbar = () => {
             <ul className="py-2" aria-labelledby="user-menu-button">
               <li>
                 <a
-                  href="/dashboard"
+                  href="/home"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Dashboard
+                  Halaman Utama
                 </a>
               </li>
               <li>
@@ -93,10 +93,10 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="/chat"
+                  href="/settings"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Chat
+                  Pengaturan
                 </a>
               </li>
               <li>
@@ -104,7 +104,7 @@ const Navbar = () => {
                   href="/"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Sign out
+                  Keluar
                 </a>
               </li>
             </ul>
