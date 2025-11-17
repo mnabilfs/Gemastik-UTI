@@ -11,24 +11,25 @@ import Internship from "./pages/Internship";
 import Account from "./pages/Account";
 import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
-import Register from "./pages/Register"; 
-import Login from "./pages/Login"; 
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import TentangKami from "./pages/TentangKami";
+import Rekomendasi from "./pages/Rekomendasi";
+import Kontak from "./pages/Kontak";
 
 // Untul membuat agar mau mengakses halaman tertentu harus login dulu
 const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
   if (!isLoggedIn) {
     // Redirect ke login jika belum login
     return <Navigate to="/login" replace />;
   }
-  
+
   return children;
 };
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
@@ -45,24 +46,26 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/tentang-kami" element={<TentangKami />} />
+          <Route path="/rekomendasi" element={<Rekomendasi />} />
+          <Route path="/kontak" element={<Kontak />} />
 
           {/* Butuh Login Dashboard */}
-          <Route 
-            path="/dashboard" 
+          <Route
+            path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
-            } 
+            }
           />
           {/* Butuh Login Account */}
-          <Route 
-            path="/account" 
+          <Route
+            path="/account"
             element={
               <ProtectedRoute>
                 <Account />
               </ProtectedRoute>
-            } 
+            }
           />
         </Routes>
       </BrowserRouter>

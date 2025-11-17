@@ -44,9 +44,9 @@ const TentangKami = () => {
                 <h2 className="text-2xl font-bold text-gray-900">Visi Kami</h2>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Menjadi platform edukasi teknologi yang memberdayakan
-                setiap individu untuk memahami dan memanfaatkan
-                kecerdasan buatan secara etis dan efektif dalam era digital.
+                Menjadi platform edukasi teknologi yang memberdayakan setiap
+                individu untuk memahami dan memanfaatkan kecerdasan buatan
+                secara etis dan efektif dalam era digital.
               </p>
             </div>
 
@@ -57,9 +57,9 @@ const TentangKami = () => {
                 <h2 className="text-2xl font-bold text-gray-900">Misi Kami</h2>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Menyediakan edukasi berkualitas, tutorial praktis,
-                dan sumber daya yang mudah dipahami untuk membantu
-                beradaptasi dengan perkembangan teknologi AI.
+                Menyediakan edukasi berkualitas, tutorial praktis, dan sumber
+                daya yang mudah dipahami untuk membantu beradaptasi dengan
+                perkembangan teknologi AI.
               </p>
             </div>
           </div>
@@ -92,8 +92,8 @@ const TentangKami = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Kualitas</h3>
               <p className="text-gray-600">
-                Menyajikan informasi yang akurat dan mudah
-                dipahami oleh semua kalangan.
+                Menyajikan informasi yang akurat dan mudah dipahami oleh semua
+                kalangan.
               </p>
             </div>
 
@@ -102,9 +102,7 @@ const TentangKami = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
                 <Heart className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Manfaat
-              </h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Manfaat</h3>
               <p className="text-gray-600">
                 Fokus pada solusi praktis yang dapat langsung diterapkan dalam
                 kehidupan sehari-hari.
@@ -156,15 +154,6 @@ const TentangKami = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-400">
-            © 2025 Human After Tech. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };

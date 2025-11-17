@@ -320,7 +320,8 @@ const Hero_LandingPage = () => {
       id: 16,
       src: LogoMD,
       alt: "MD AI",
-      position: "xl:top-[305px] xl:right-[114px] 2xl:top-[545px] 2xl:right-[324px] 3xl:top-[670px] 3xl:right-[449px]",
+      position:
+        "xl:top-[305px] xl:right-[114px] 2xl:top-[545px] 2xl:right-[324px] 3xl:top-[670px] 3xl:right-[449px]",
       size: "xl:w-[127.132px] xl:h-[128.71px] 2xl:w-[258px] 2xl:h-[259.30px] 3xl:w-[332px] 3xl:h-[344px]",
       rotation: "rotate-[0.04deg]",
       delay: "2s",
@@ -533,7 +534,7 @@ const Hero_LandingPage = () => {
         );
       })}
 
- {/* Main Content Card */}
+      {/* Main Content Card */}
       <div className="relative z-10 max-w-3xl w-full">
         <div className="rounded-3xl p-12 md:p-25 text-center relative">
           {/* Background dengan animasi fade-in-out */}
@@ -562,14 +563,15 @@ const Hero_LandingPage = () => {
             </p>
 
             {/* CTA Button - UPDATED dengan onClick */}
-            <button 
+            <button
               onClick={() => {
                 // Cek apakah sudah login
-                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const isLoggedIn =
+                  localStorage.getItem("isLoggedIn") === "true";
                 if (isLoggedIn) {
-                  navigate('/dashboard');
+                  navigate("/dashboard");
                 } else {
-                  navigate('/login');
+                  navigate("/login");
                 }
               }}
               className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
