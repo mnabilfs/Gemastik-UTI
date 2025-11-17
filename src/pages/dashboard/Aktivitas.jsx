@@ -117,7 +117,7 @@ export default function Aktivitas() {
       </div>
 
       {/* HISTORY */}
-      <Section title="History" items={historyItems} />
+      <Section title="Riwayat" items={historyItems} />
 
       {/* BLOG TERSIMPAN */}
       <Section title="Blog Tersimpan" items={savedItems} />

@@ -19,6 +19,7 @@ import EksplorasiAI from "./pages/dashboard/EksplorasiAI";
 import Internship from "./pages/dashboard/Internship";
 import LearningHub from "./pages/dashboard/LearningHub";
 import Aktivitas from "./pages/dashboard/Aktivitas";
+import Setting from "./pages/Setting";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
           </Route>
 
           <Route path="/account" element={<Account />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/settings" element={<Setting />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/gemini-ai" element={<GeminiArticle />} />
           <Route path="/blog/chatgpt-ai" element={<ChatGPTArticle />} />

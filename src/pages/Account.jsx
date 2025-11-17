@@ -89,9 +89,6 @@ const Account = () => {
                       className="object-cover w-full h-full"
                     />
                   </div>
-                  <button className="absolute bottom-0 right-0 p-2 text-white transition bg-blue-500 rounded-full shadow-lg cursor-pointer hover:bg-blue-600">
-                    <Camera className="w-4 h-4" />
-                  </button>
                 </div>
 
                 {/* Name and Bio */}

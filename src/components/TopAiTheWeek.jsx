@@ -4,7 +4,7 @@ const TopAiTheWeek = () => {
   return (
     <div className="p-5 bg-white border border-gray-200 shadow-sm rounded-xl">
       <h4 className="mb-3 font-medium text-gray-900 text-md">
-        Top AI The Week
+        AI Teratas Minggu Ini
       </h4>
       <ol className="space-y-2 text-sm text-gray-700">
         <li className="flex items-center gap-3">
