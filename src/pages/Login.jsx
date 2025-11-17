@@ -195,7 +195,7 @@ const Login = () => {
                 padding: 0
               }}
             >
-              Selamat datang di website kita
+              Selamat datang di Human After Tech
             </p>
           </div>
 
@@ -531,7 +531,7 @@ const Login = () => {
           animationDelay: '0s',
           zIndex: 1
         }}>
-          Website
+          HAT
         </h2>
 
         {/* Logo Container */}

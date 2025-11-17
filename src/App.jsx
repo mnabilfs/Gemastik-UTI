@@ -13,6 +13,7 @@ import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register"; 
 import Login from "./pages/Login"; 
+import TentangKami from "./pages/TentangKami";
 
 // Untul membuat agar mau mengakses halaman tertentu harus login dulu
 const ProtectedRoute = ({ children }) => {
@@ -43,6 +44,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/tentang-kami" element={<TentangKami />} />
 
           {/* Butuh Login Dashboard */}
           <Route 

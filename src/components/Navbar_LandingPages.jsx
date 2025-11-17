@@ -1,14 +1,26 @@
-// src/components/Navbar_LandingPages.jsx (UPDATED)
+// src/components/Navbar_LandingPages.jsx (UPDATED with Active State)
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "../assets/logo.png";
 
 const Navbar_LandingPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isExplorasiOpen, setIsExplorasiOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+
+  // Deteksi scroll untuk animasi navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Cek status login saat komponen dimuat
   useEffect(() => {
@@ -34,14 +46,26 @@ const Navbar_LandingPage = () => {
     navigate("/");
   };
 
+  // Helper function untuk cek apakah menu aktif
+  const isActive = (path) => location.pathname === path;
+  
+  // Helper function untuk cek apakah submenu eksplorasi aktif
+  const isExplorasiActive = () => {
+    return ['/blog', '/artikel', '/tutorial'].includes(location.pathname);
+  };
+
   return (
-    <nav className="bg-white border-b border-gray-200">
+    <nav className={`bg-white border-b border-gray-200 transition-all duration-300 ${
+      isActive('/') ? '' : 'sticky top-0 z-50'
+    } ${
+      scrolled && !isActive('/') ? 'shadow-lg py-0.5' : 'shadow-sm py-0'
+    }`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-auto">
         {/* LOGO */}
         <a href="/" className="flex items-center space-x-3">
           <img src={Logo} className="h-24" alt="Human After Tech Logo" />
         </a>
-
+      
         {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -72,7 +96,7 @@ const Navbar_LandingPage = () => {
           {/* Beranda */}
           <a
             href="/"
-            className="text-blue-600 font-medium hover:text-blue-700 transition-colors"
+            className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
           >
             Beranda
           </a>
@@ -80,7 +104,11 @@ const Navbar_LandingPage = () => {
           {/* Tentang Kami */}
           <a
             href="/tentang-kami"
-            className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+            className={`font-medium transition-colors ${
+              isActive('/tentang-kami') 
+                ? 'text-blue-600' 
+                : 'text-gray-700 hover:text-blue-600'
+            }`}
           >
             Tentang Kami
           </a>
@@ -89,7 +117,11 @@ const Navbar_LandingPage = () => {
           <div className="relative">
             <button
               onClick={() => setIsExplorasiOpen(!isExplorasiOpen)}
-              className="flex items-center space-x-1 text-gray-700 font-medium hover:text-blue-600 transition-colors"
+              className={`flex items-center space-x-1 font-medium transition-colors ${
+                isExplorasiActive() 
+                  ? 'text-blue-600' 
+                  : 'text-gray-700 hover:text-blue-600'
+              }`}
             >
               <span>Eksplorasi</span>
               <svg
@@ -114,19 +146,31 @@ const Navbar_LandingPage = () => {
               <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                 <a
                   href="/blog"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                  className={`block px-4 py-2 transition-colors ${
+                    isActive('/blog')
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
                 >
                   Blog
                 </a>
                 <a
                   href="/artikel"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                  className={`block px-4 py-2 transition-colors ${
+                    isActive('/artikel')
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
                 >
                   Artikel
                 </a>
                 <a
                   href="/tutorial"
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                  className={`block px-4 py-2 transition-colors ${
+                    isActive('/tutorial')
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
                 >
                   Tutorial
                 </a>
@@ -137,7 +181,11 @@ const Navbar_LandingPage = () => {
           {/* Kontak */}
           <a
             href="/kontak"
-            className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+            className={`font-medium transition-colors ${
+              isActive('/kontak') 
+                ? 'text-blue-600' 
+                : 'text-gray-700 hover:text-blue-600'
+            }`}
           >
             Kontak
           </a>
@@ -194,13 +242,17 @@ const Navbar_LandingPage = () => {
             <div className="flex flex-col space-y-3">
               <a
                 href="/"
-                className="text-blue-600 font-medium hover:text-blue-700 transition-colors"
+                className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
               >
                 Beranda
               </a>
               <a
                 href="/tentang-kami"
-                className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+                className={`font-medium transition-colors ${
+                  isActive('/tentang-kami') 
+                    ? 'text-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 Tentang Kami
               </a>
@@ -209,7 +261,11 @@ const Navbar_LandingPage = () => {
               <div>
                 <button
                   onClick={() => setIsExplorasiOpen(!isExplorasiOpen)}
-                  className="flex items-center justify-between w-full text-gray-700 font-medium hover:text-blue-600 transition-colors"
+                  className={`flex items-center justify-between w-full font-medium transition-colors ${
+                    isExplorasiActive() 
+                      ? 'text-blue-600' 
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
                 >
                   <span>Eksplorasi</span>
                   <svg
@@ -232,19 +288,31 @@ const Navbar_LandingPage = () => {
                   <div className="ml-4 mt-2 space-y-2">
                     <a
                       href="/blog"
-                      className="block text-gray-600 hover:text-blue-600 transition-colors"
+                      className={`block transition-colors ${
+                        isActive('/blog')
+                          ? 'text-blue-600 font-medium'
+                          : 'text-gray-600 hover:text-blue-600'
+                      }`}
                     >
                       Blog
                     </a>
                     <a
                       href="/artikel"
-                      className="block text-gray-600 hover:text-blue-600 transition-colors"
+                      className={`block transition-colors ${
+                        isActive('/artikel')
+                          ? 'text-blue-600 font-medium'
+                          : 'text-gray-600 hover:text-blue-600'
+                      }`}
                     >
                       Artikel
                     </a>
                     <a
                       href="/tutorial"
-                      className="block text-gray-600 hover:text-blue-600 transition-colors"
+                      className={`block transition-colors ${
+                        isActive('/tutorial')
+                          ? 'text-blue-600 font-medium'
+                          : 'text-gray-600 hover:text-blue-600'
+                      }`}
                     >
                       Tutorial
                     </a>
@@ -254,7 +322,11 @@ const Navbar_LandingPage = () => {
 
               <a
                 href="/kontak"
-                className="text-gray-700 font-medium hover:text-blue-600 transition-colors"
+                className={`font-medium transition-colors ${
+                  isActive('/kontak') 
+                    ? 'text-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 Kontak
               </a>

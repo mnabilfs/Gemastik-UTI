@@ -218,7 +218,7 @@ const Register = () => {
                   padding: 0
                 }}
               >
-                Bergabunglah dengan komunitas kami
+                Bergabunglah dengan Human After Tech
               </p>
             </div>
 
@@ -673,7 +673,7 @@ const Register = () => {
             animationDelay: '0s',
             zIndex: 1
           }}>
-            Website
+            HAT
           </h2>
 
           {/* Logo Container */}
