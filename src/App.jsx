@@ -7,7 +7,7 @@ import ChatGPTArticle from "./pages/ChatGPTArticle";
 import ClaudeArticle from "./pages/ClaudeArticle";
 import QwenArticle from "./pages/QwenArticle";
 import LandingPages from "./pages/LandingPages";
-import Internship from "./pages/Internship";
+
 import Account from "./pages/Account";
 import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
@@ -17,17 +17,26 @@ import TentangKami from "./pages/TentangKami";
 import Rekomendasi from "./pages/Rekomendasi";
 import Kontak from "./pages/Kontak";
 
-// Untul membuat agar mau mengakses halaman tertentu harus login dulu
+import MainLayout from "./layouts/MainLayout";
+
+import Home from "./pages/dashboard/Home";
+import EksplorasiAI from "./pages/dashboard/EksplorasiAI";
+import Internship from "./pages/dashboard/Internship";
+import LearningHub from "./pages/dashboard/LearningHub";
+import Aktivitas from "./pages/dashboard/Aktivitas";
+import Setting from "./pages/Setting";
+
 const ProtectedRoute = ({ children }) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   if (!isLoggedIn) {
-    // Redirect ke login jika belum login
     return <Navigate to="/login" replace />;
   }
 
   return children;
 };
+
+
 
 function App() {
   return (
@@ -35,7 +44,19 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPages />} />
-          <Route path="/chat" element={<Chat />} />
+
+          <Route element={<MainLayout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/eksplorasi-ai" element={<EksplorasiAI />} />
+            <Route path="/internship" element={<Internship />} />
+            <Route path="/learning-hub" element={<LearningHub />} />
+            <Route path="/aktifitas" element={<Aktivitas />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+
+          <Route path="/account" element={<Account />} />
+          <Route path="/settings" element={<Setting />} />
+            
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/gemini-ai" element={<GeminiArticle />} />
           <Route path="/blog/chatgpt-ai" element={<ChatGPTArticle />} />
@@ -51,10 +72,10 @@ function App() {
 
           {/* Butuh Login Dashboard */}
           <Route
-            path="/dashboard"
+            path="/home"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Home />
               </ProtectedRoute>
             }
           />

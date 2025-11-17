@@ -1,5 +1,12 @@
 import React from "react";
-import { HiLink, HiOutlineMail } from "react-icons/hi";
+import {
+  HiLink,
+  HiHeart,
+  HiBookmark,
+  HiOutlineMail,
+  HiOutlineHeart,
+  HiOutlineBookmark,
+} from "react-icons/hi";
 import {
   SiClaude,
   SiOpenai,
@@ -52,6 +59,9 @@ const relatedPostsData = [
 ];
 
 const ArticleHeader = () => {
+  const [isLiked, setIsLiked] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+
   return (
     <section className="bg-white border-gray-200 ">
       <div className="max-w-4xl px-4 py-10 mx-auto sm:px-6 lg:px-8">
@@ -73,6 +83,50 @@ const ArticleHeader = () => {
           </a>
           <span className="text-sm text-gray-600 ">Nov 1, 2025</span>
           <span className="text-sm text-gray-600 ">M. Nabil Farras S.</span>
+
+          <div className="flex items-center gap-4 ml-auto">
+            {/* Tombol Sukai */}
+            <button
+              // 5. Tambahkan onClick untuk mengubah state
+              onClick={() => setIsLiked(!isLiked)}
+              // 4. Ubah class secara dinamis berdasarkan state
+              className={`flex items-center gap-1.5 transition-colors duration-150 cursor-pointer
+                        ${
+                          isLiked
+                            ? "text-red-600" // State aktif (merah)
+                            : "text-gray-600 hover:text-red-600" // State non-aktif
+                        }`}
+            >
+              {/* 4. Ganti ikon secara dinamis */}
+              {isLiked ? (
+                <HiHeart className="w-5 h-5" /> // Ikon terisi
+              ) : (
+                <HiOutlineHeart className="w-5 h-5" /> // Ikon outline
+              )}
+              <span className="text-sm font-medium">Sukai</span>
+            </button>
+
+            {/* Tombol Simpan */}
+            <button
+              // 5. Tambahkan onClick untuk mengubah state
+              onClick={() => setIsSaved(!isSaved)}
+              // 4. Ubah class secara dinamis berdasarkan state
+              className={`flex items-center gap-1.5 transition-colors duration-150 cursor-pointer
+                        ${
+                          isSaved
+                            ? "text-blue-600" // State aktif (biru)
+                            : "text-gray-600 hover:text-blue-600" // State non-aktif
+                        }`}
+            >
+              {/* 4. Ganti ikon secara dinamis */}
+              {isSaved ? (
+                <HiBookmark className="w-5 h-5" /> // Ikon terisi
+              ) : (
+                <HiOutlineBookmark className="w-5 h-5" /> // Ikon outline
+              )}
+              <span className="text-sm font-medium">Simpan</span>
+            </button>
+          </div>
         </div>
 
         {/* Judul Utama Artikel */}
