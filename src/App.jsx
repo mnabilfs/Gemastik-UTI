@@ -7,18 +7,35 @@ import ChatGPTArticle from "./pages/ChatGPTArticle";
 import ClaudeArticle from "./pages/ClaudeArticle";
 import QwenArticle from "./pages/QwenArticle";
 import LandingPages from "./pages/LandingPages";
-import Internship from "./pages/Internship";
+
 import Account from "./pages/Account";
 import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
 
-function App() {
+import MainLayout from "./layouts/MainLayout";
 
+import Home from "./pages/dashboard/Home";
+import EksplorasiAI from "./pages/dashboard/EksplorasiAI";
+import Internship from "./pages/dashboard/Internship";
+import LearningHub from "./pages/dashboard/LearningHub";
+import Aktivitas from "./pages/dashboard/Aktivitas";
+
+function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPages />} />
+          <Route element={<MainLayout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/eksplorasi-ai" element={<EksplorasiAI />} />
+            <Route path="/internship" element={<Internship />} />
+            <Route path="/learning-hub" element={<LearningHub />} />
+            <Route path="/aktifitas" element={<Aktivitas />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/account" element={<Account />} />
+          </Route>
+
           <Route path="/account" element={<Account />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/blog" element={<Blog />} />
