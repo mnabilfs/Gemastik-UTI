@@ -50,6 +50,7 @@ function App() {
           </Route>
 
           <Route path="/settings" element={<Setting />} />
+          <Route path="/account" element={<Account />} />
 
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/gemini-ai" element={<GeminiArticle />} />
