@@ -11,8 +11,10 @@ import LogoMD from "../assets/Logo_MD.png";
 import LogoCopyAI from "../assets/Logo_CopyAI.png";
 import LogoAdobeFirefly from "../assets/Logo_AdobeFirefly.png";
 import LogoMidjourney from "../assets/Logo_Midjourney.png";
+import { useNavigate } from "react-router-dom";
 
 const Hero_LandingPage = () => {
+  const navigate = useNavigate(); // TAMBAHKAN INI
   const floatingIcons = [
     //Untuk Blok Kosong Kiri
     {
@@ -318,8 +320,9 @@ const Hero_LandingPage = () => {
       id: 16,
       src: LogoMD,
       alt: "MD AI",
-      position: "top-[305px] right-[114px]",
-      size: "w-[127.132px] h-[128.71px]",
+      position:
+        "xl:top-[305px] xl:right-[114px] 2xl:top-[545px] 2xl:right-[324px] 3xl:top-[670px] 3xl:right-[449px]",
+      size: "xl:w-[127.132px] xl:h-[128.71px] 2xl:w-[258px] 2xl:h-[259.30px] 3xl:w-[332px] 3xl:h-[344px]",
       rotation: "rotate-[0.04deg]",
       delay: "2s",
       animation: "float-gentle",
@@ -559,8 +562,20 @@ const Hero_LandingPage = () => {
               tools AI untuk dipakai sehari-hari.
             </p>
 
-            {/* CTA Button */}
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            {/* CTA Button - UPDATED dengan onClick */}
+            <button
+              onClick={() => {
+                // Cek apakah sudah login
+                const isLoggedIn =
+                  localStorage.getItem("isLoggedIn") === "true";
+                if (isLoggedIn) {
+                  navigate("/dashboard");
+                } else {
+                  navigate("/login");
+                }
+              }}
+              className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
               Mulai Membaca
             </button>
           </div>

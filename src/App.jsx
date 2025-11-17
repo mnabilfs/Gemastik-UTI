@@ -11,6 +11,11 @@ import LandingPages from "./pages/LandingPages";
 import Account from "./pages/Account";
 import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import TentangKami from "./pages/TentangKami";
+import Rekomendasi from "./pages/Rekomendasi";
+import Kontak from "./pages/Kontak";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -21,13 +26,24 @@ import LearningHub from "./pages/dashboard/LearningHub";
 import Aktivitas from "./pages/dashboard/Aktivitas";
 import Setting from "./pages/Setting";
 
+const ProtectedRoute = ({ children }) => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+
+
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPages />} />
-
 
           <Route element={<MainLayout />}>
             <Route path="/home" element={<Home />} />
@@ -40,14 +56,38 @@ function App() {
 
           <Route path="/account" element={<Account />} />
           <Route path="/settings" element={<Setting />} />
+            
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/gemini-ai" element={<GeminiArticle />} />
           <Route path="/blog/chatgpt-ai" element={<ChatGPTArticle />} />
           <Route path="/blog/claude-ai" element={<ClaudeArticle />} />
           <Route path="/blog/qwen-ai" element={<QwenArticle />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/internship" element={<Internship />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/tentang-kami" element={<TentangKami />} />
+          <Route path="/rekomendasi" element={<Rekomendasi />} />
+          <Route path="/kontak" element={<Kontak />} />
+
+          {/* Butuh Login Dashboard */}
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          {/* Butuh Login Account */}
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <Account />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
