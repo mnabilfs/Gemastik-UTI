@@ -8,30 +8,30 @@ const Navbar_LandingPage = () => {
   const [isExplorasiOpen, setIsExplorasiOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
 
   // Cek status login saat komponen dimuat
   useEffect(() => {
     const checkLoginStatus = () => {
-      const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const user = JSON.parse(localStorage.getItem("user") || "{}");
       setIsLoggedIn(loggedIn);
-      setUserName(user.name || '');
+      setUserName(user.name || "");
     };
 
     checkLoginStatus();
-    
+
     // Optional: Listen untuk perubahan localStorage (jika login di tab lain)
-    window.addEventListener('storage', checkLoginStatus);
-    return () => window.removeEventListener('storage', checkLoginStatus);
+    window.addEventListener("storage", checkLoginStatus);
+    return () => window.removeEventListener("storage", checkLoginStatus);
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('user');
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("user");
     setIsLoggedIn(false);
-    setUserName('');
-    navigate('/');
+    setUserName("");
+    navigate("/");
   };
 
   return (
@@ -149,7 +149,7 @@ const Navbar_LandingPage = () => {
             <>
               {/* Dashboard Button */}
               <button
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate("/dashboard")}
                 type="button"
                 className="px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
               >
@@ -169,7 +169,7 @@ const Navbar_LandingPage = () => {
             <>
               {/* Daftar Button */}
               <button
-                onClick={() => navigate('/register')}
+                onClick={() => navigate("/register")}
                 type="button"
                 className="px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
               >
@@ -178,7 +178,7 @@ const Navbar_LandingPage = () => {
 
               {/* Masuk Button */}
               <button
-                onClick={() => navigate('/login')}
+                onClick={() => navigate("/login")}
                 type="button"
                 className="px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
               >
@@ -264,10 +264,10 @@ const Navbar_LandingPage = () => {
                 {isLoggedIn ? (
                   <>
                     <span className="text-gray-700 font-medium">
-                      Halo, {userName.split(' ')[0]}
+                      Halo, {userName.split(" ")[0]}
                     </span>
                     <button
-                      onClick={() => navigate('/dashboard')}
+                      onClick={() => navigate("/dashboard")}
                       type="button"
                       className="w-full px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
                     >
@@ -284,14 +284,14 @@ const Navbar_LandingPage = () => {
                 ) : (
                   <>
                     <button
-                      onClick={() => navigate('/register')}
+                      onClick={() => navigate("/register")}
                       type="button"
                       className="w-full px-6 py-2 text-blue-600 font-medium border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
                     >
                       Daftar
                     </button>
                     <button
-                      onClick={() => navigate('/login')}
+                      onClick={() => navigate("/login")}
                       type="button"
                       className="w-full px-6 py-2 text-white font-medium bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
                     >

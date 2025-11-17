@@ -5,7 +5,6 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Animations Hero_LandingPage */
 /* fade-in-out: muncul > idle > menghilang (loop) */
 @keyframes fade-in-out {
   0% {
@@ -62,8 +61,7 @@ html {
 .float-wave   { animation: float-wave 7s ease-in-out infinite; will-change: transform; }
 .float-slow   { animation: float-slow 8s ease-in-out infinite; will-change: transform; }
 
-/* optional: memastikan .fade-in-out respect animationDelay dari inline style
-   ( biasanya sudah bekerja, tetapi ini safe ) */
+/* optional: memastikan .fade-in-out respect animationDelay dari inline style */
 .fade-in-out,
 .float-smooth,
 .float-gentle,
