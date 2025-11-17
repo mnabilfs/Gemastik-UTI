@@ -82,19 +82,21 @@ export default function EksplorasiAI() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [cardsPerPage, setCardsPerPage] = useState(6);
+  // Perubahan 1: Mengatur nilai awal cardsPerPage menjadi 8
+  const [cardsPerPage, setCardsPerPage] = useState(8); 
 
   const navigate = useNavigate();
 
   const categories = ["All", "Chatbots", "Coding AI", "Creative AI", "Productivity AI"];
 
-  // ==================== RESPONSIVE CARD PER PAGE ====================
+  // ==================== RESPONSIVE CARD PER PAGE (DIUBAH KE 8 PADA LAYAR BESAR) ====================
   useEffect(() => {
     const updateCards = () => {
       if (window.innerWidth < 640) {
         setCardsPerPage(2); // mobile
       } else {
-        setCardsPerPage(6); // md ke atas → FIXED
+        // Perubahan 2: Mengatur cardsPerPage menjadi 8 untuk layar besar
+        setCardsPerPage(8); 
       }
     };
 
@@ -185,7 +187,7 @@ export default function EksplorasiAI() {
 
           <button
             onClick={() => navigate("/notfound")}
-            className="mt-3 px-5 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition"
+            className="mt-3 px-5 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition cursor-pointer"
           >
             Learn More →
           </button>
@@ -227,8 +229,8 @@ export default function EksplorasiAI() {
         </div>
       </div>
 
-      {/* ==================== GRID (KARTU) ==================== */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-7">
+      {/* ==================== GRID (KARTU) - 4 KOLOM, 8 PER HALAMAN ==================== */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
         
         {paginated.map((item) => (
           <div
@@ -248,13 +250,13 @@ export default function EksplorasiAI() {
               {item.date}
             </p>
 
-            {/* Judul (text-md, line-clamp-2) */}
-            <h5 className="pb-3 font-semibold text-gray-900 text-md line-clamp-2">
+            {/* Judul: Tanpa line-clamp agar tidak terpotong */}
+            <h5 className="pb-3 font-semibold text-gray-900 text-md">
               {item.title}
             </h5>
             
-            {/* Deskripsi */}
-            <p className="pb-3 mb-2 text-sm text-gray-700 line-clamp-3">
+            {/* Deskripsi: Tanpa line-clamp agar tidak terpotong */}
+            <p className="pb-3 mb-2 text-sm text-gray-700">
               {item.description}
             </p>
 
@@ -271,13 +273,15 @@ export default function EksplorasiAI() {
       </div>
 
       {/* ==================== PAGINATION REVISI FINAL ==================== */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-1 mt-10 text-sm"> {/* Mengurangi gap menjadi gap-1 */}
+      {/* **PERUBAHAN:** Menghapus kondisi totalPages > 1 agar paginasi tetap muncul 
+             bahkan di kategori yang hanya memiliki 1 halaman. 
+             (Kita ganti dengan kondisi: tampilkan jika ada artikel yang terfilter) */}
+      {filteredArticles.length > 0 && (
+        <div className="flex justify-center items-center gap-1 mt-10 text-sm"> 
           {/* Tombol Sebelumnya (◀) */}
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            // Gaya: Tanpa kotak, teks biru, hover abu-abu. Ukuran w-10 h-10 agar lebih besar sedikit
             className="w-10 h-10 flex items-center justify-center text-blue-600 bg-transparent rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
             &lt;
@@ -293,12 +297,12 @@ export default function EksplorasiAI() {
                 w-10 h-10 flex items-center justify-center font-medium transition
                 ${
                   typeof p === 'number'
-                  ? page === p 
+                  ? page === p 
                     // Gaya Tombol Aktif (Pill Biru Muda, Teks Biru Tua)
                     ? "bg-blue-100 text-blue-600 rounded-xl font-bold"
                     // Gaya Tombol Tidak Aktif (Hanya Teks Abu-abu)
                     : "bg-transparent text-gray-500 rounded-full hover:bg-gray-100"
-                  : 
+                  : 
                     // Gaya Ellipsis (...)
                     "bg-transparent text-gray-500 cursor-default"
                 }
@@ -312,7 +316,6 @@ export default function EksplorasiAI() {
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            // Gaya: Tanpa kotak, teks biru, hover abu-abu
             className="w-10 h-10 flex items-center justify-center text-blue-600 bg-transparent rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
             &gt;
